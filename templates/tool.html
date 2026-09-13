@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto.Space | المختبر الكمومي</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body class="tech-theme theme-dark performance-lite">
+
+    <div class="tech-grid"></div>
+
+    <!-- شريط تنقل محسن مع الثيمات -->
+    <nav class="glass-nav compact-nav">
+        <div class="container nav-content">
+            <a href="/" class="brand-logo small">
+                <i class="ri-planet-fill logo-spin"></i> Alkhalil<span class="highlight">Fa</span>
+            </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleThemeMenu()" title="تغيير الثيم">
+                    <i class="ri-palette-line"></i>
+                </button>
+                <a href="/" class="nav-back"><i class="ri-arrow-right-line"></i> الرئيسية</a>
+                <a href="/about" class="nav-back">من نحن</a>
+            </div>
+        </div>
+        
+        <!-- قائمة الثيمات -->
+        <div class="theme-menu" id="theme-menu" style="display: none;">
+            <div class="theme-menu-header">
+                <h4><i class="ri-palette-line"></i> اختر الثيم</h4>
+                <button onclick="toggleThemeMenu()" class="close-theme-menu">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="theme-options">
+                <div class="theme-card" onclick="applyTheme('cyber')" data-theme="cyber">
+                    <div class="theme-preview cyber-preview"></div>
+                    <div class="theme-info">
+                        <h5>سايبر</h5>
+                        <p>نيون وتأثيرات مستقبلية</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+                
+                <div class="theme-card active" onclick="applyTheme('dark')" data-theme="dark">
+                    <div class="theme-preview dark-preview"></div>
+                    <div class="theme-info">
+                        <h5>داكن</h5>
+                        <p>التصميم الافتراضي</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+                
+                <div class="theme-card" onclick="applyTheme('matrix')" data-theme="matrix">
+                    <div class="theme-preview matrix-preview"></div>
+                    <div class="theme-info">
+                        <h5>ماتريكس</h5>
+                        <p>أخضر رقمي كلاسيكي</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+                
+                <div class="theme-card" onclick="applyTheme('sunset')" data-theme="sunset">
+                    <div class="theme-preview sunset-preview"></div>
+                    <div class="theme-info">
+                        <h5>غروب</h5>
+                        <p>برتقالي وبنفسجي دافئ</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+                
+                <div class="theme-card" onclick="applyTheme('ocean')" data-theme="ocean">
+                    <div class="theme-preview ocean-preview"></div>
+                    <div class="theme-info">
+                        <h5>محيط</h5>
+                        <p>أزرق هادئ ومريح</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+                
+                <div class="theme-card" onclick="applyTheme('royal')" data-theme="royal">
+                    <div class="theme-preview royal-preview"></div>
+                    <div class="theme-info">
+                        <h5>ملكي</h5>
+                        <p>ذهبي وبنفسجي فاخر</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- الواجهة الرئيسية للمختبر: تصميم لوحة القيادة -->
+    <div class="dashboard-wrapper">
+
+        <!-- الشريط الجانبي: اختيار الخوارزمية -->
+        <aside class="sidebar-panel">
+            <div class="panel-header">
+                <h3><i class="ri-function-line"></i> البروتوكولات</h3>
+                <span class="available-algorithms"><i class="ri-check-double-line"></i> 11 متاحة</span>
+            </div>
+            <div class="algo-list">
+                <button class="algo-btn active" onclick="selectAlgo('caesar', this)">
+                    <span class="algo-icon">C</span>
+                    <div class="algo-info">
+                        <span class="name">Caesar Cipher</span>
+                        <span class="desc">تشفير الإزاحة البسيط</span>
+                    </div>
+                </button>
+                <button class="algo-btn" onclick="selectAlgo('vigenere', this)">
+                    <span class="algo-icon">V</span>
+                    <div class="algo-info">
+                        <span class="name">Vigenère Cipher</span>
+                        <span class="desc">متعدد الأبجديات</span>
+                    </div>
+                </button>
+                <button class="algo-btn" onclick="selectAlgo('playfair', this)">
+                    <span class="algo-icon">P</span>
+                    <div class="algo-info">
+                        <span class="name">Playfair</span>
+                        <span class="desc">مصفوفة 5x5</span>
+                    </div>
+                </button>
+                <button class="algo-btn" onclick="selectAlgo('affine', this)">
+                    <span class="algo-icon">Af</span>
+                    <div class="algo-info">
+                        <span class="name">Affine Cipher</span>
+                        <span class="desc">دالة خطية Ax+B</span>
+                    </div>
+                </button>
+                <button class="algo-btn" onclick="selectAlgo('des', this)">
+                    <span class="algo-icon">D</span>
+                    <div class="algo-info">
+                        <span class="name">DES Legacy</span>
+                        <span class="desc">معيار 64-بت</span>
+                    </div>
+                </button>
+                <button class="algo-btn" onclick="selectAlgo('des3', this)">
+                    <span class="algo-icon">3D</span>
+                    <div class="algo-info">
+                        <span class="name">3DES</span>
+                        <span class="desc">تشفير DES ثلاثي</span>
+                    </div>
+                </button>
+                <button class="algo-btn" onclick="selectAlgo('rsa', this)">
+                    <span class="algo-icon">R</span>
+                    <div class="algo-info">
+                        <span class="name">RSA</span>
+                        <span class="desc">تشفير بالمفتاح العام</span>
+                    </div>
+                </button>
+                <div class="divider"></div>
+                <button class="algo-btn" onclick="selectAlgo('monoalphabetic', this)">
+                    <span class="algo-icon">M</span>
+                    <div class="algo-info">
+                        <span class="name">Monoalphabetic</span>
+                        <span class="desc">استبدال أبجدي ثابت</span>
+                    </div>
+                </button>
+                <button class="algo-btn" onclick="selectAlgo('atbash', this)">
+                    <span class="algo-icon">A</span>
+                    <div class="algo-info">
+                        <span class="name">Atbash</span>
+                        <span class="desc">عكس الأبجدية</span>
+                    </div>
+                </button>
+                <button class="algo-btn" onclick="selectAlgo('rot13', this)">
+                    <span class="algo-icon">13</span>
+                    <div class="algo-info">
+                        <span class="name">ROT13</span>
+                        <span class="desc">إزاحة ثابتة</span>
+                    </div>
+                </button>
+                <button class="algo-btn file-mode" onclick="selectFileMode(this)">
+                    <span class="algo-icon"><i class="ri-file-lock-line"></i></span>
+                    <div class="algo-info">
+                        <span class="name">AES File Vault</span>
+                        <span class="desc">تشفير الملفات</span>
+                    </div>
+                </button>
+            </div>
+        </aside>
+
+        <!-- منطقة العمل الوسطى -->
+        <main class="workspace-panel">
+
+            <header class="work-header">
+                <div class="header-content">
+                    <div>
+                        <h1 id="algo-title">Caesar Cipher</h1>
+                        <p id="algo-desc">Ready to process data securely.</p>
+                    </div>
+                    <div class="lab-stats">
+                        <div class="stat-badge">
+                            <i class="ri-lock-line"></i>
+                            <span id="encrypt-count">0</span>
+                            <small>تشفير</small>
+                        </div>
+                        <div class="stat-badge">
+                            <i class="ri-unlock-line"></i>
+                            <span id="decrypt-count">0</span>
+                            <small>فك تشفير</small>
+                        </div>
+                        <div class="stat-badge">
+                            <i class="ri-time-line"></i>
+                            <span id="process-time">0ms</span>
+                            <small>الوقت</small>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="crypto-interface" id="crypto-interface">
+                <!-- قسم المدخلات: تصميم حديث -->
+                <div class="input-section">
+                    <div class="glass-input-box enhanced-input-box">
+                        <label><i class="ri-text"></i> الرسالة السرية (Plaintext)</label>
+                        <textarea id="text" class="enhanced-textarea" placeholder="اكتب رسالتك النصية هنا..." spellcheck="false"></textarea>
+                    </div>
+
+                    <div class="keys-grid">
+                        <div class="glass-input-box enhanced-input-box" id="key1-wrapper">
+                            <label id="k1-label"><i class="ri-key-2-line"></i> مفتاح التشفير</label>
+                            <input type="number" id="key1" class="enhanced-input" placeholder="قيمة المفتاح" 
+                                oninput="validateKeyInput()" pattern="[0-9]*">
+                        </div>
+                        <div class="glass-input-box enhanced-input-box" id="key2-wrapper" style="display: none;">
+                            <label><i class="ri-key-line"></i> المعامل B</label>
+                            <input type="number" id="key2" class="enhanced-input" placeholder="Ex: 7">
+                        </div>
+                    </div>
+
+                    <div class="action-btn-group">
+                        <button class="action-btn encrypt" onclick="run('encrypt')">
+                            <i class="ri-lock-2-fill"></i> تشفير
+                        </button>
+                        <button class="action-btn decrypt" onclick="run('decrypt')">
+                            <i class="ri-unlock-2-fill"></i> فك تشفير
+                        </button>
+                        <button class="action-btn visualize" onclick="openVisualization()" title="عرض التصور المرئي">
+                            <i class="ri-eye-line"></i> تصور
+                        </button>
+                        <button class="action-btn secondary" onclick="clearAll()" title="مسح الكل">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+                        <button class="action-btn secondary" onclick="copyResult()" title="نسخ النتيجة" id="copy-btn" style="display:none;">
+                            <i class="ri-file-copy-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- قسم المخرجات: شاشة طرفية -->
+                <div class="output-section">
+                    <div class="terminal-window" id="output-box" style="display: none;">
+                        <div class="terminal-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="title">SYSTEM_OUTPUT.log</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="result-row">
+                                <span class="prompt">$ RESULT:</span>
+                                <span id="final-res" class="glowing-text">...</span>
+                            </div>
+                            <div class="divider-line"></div>
+                            <div class="steps-container">
+                                <span class="comment">// Mathematical operations trace:</span>
+                                <div id="steps-log" class="code-trace"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- حالة الانتظار -->
+                    <div id="idle-state" class="idle-visual">
+                        <div class="pulse-ring"></div>
+                        <p>بانتظار إدخال البيانات...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم التصور التفاعلي: يظهر أسفل المدخلات والنتيجة -->
+            <div class="visualization-panel" id="viz-panel" style="display: none;">
+                <div class="viz-header">
+                    <h3><i class="ri-eye-line"></i> التصور المباشر</h3>
+                    <div class="viz-controls">
+                        <button class="viz-btn" onclick="pauseVisualization()" id="pause-btn" title="إيقاف مؤقت">
+                            <i class="ri-pause-line"></i>
+                        </button>
+                        <button class="viz-btn" onclick="playVisualization()" id="play-btn" title="تشغيل" style="display:none;">
+                            <i class="ri-play-line"></i>
+                        </button>
+                        <button class="viz-btn" onclick="restartVisualization()" title="إعادة">
+                            <i class="ri-restart-line"></i>
+                        </button>
+                        <button class="viz-btn" onclick="closeVisualization()" title="إغلاق">
+                            <i class="ri-close-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="viz-layout">
+                    <div class="viz-canvas" id="viz-canvas">
+                        <canvas id="animation-canvas" width="800" height="400"></canvas>
+                        <div class="viz-info" id="viz-info">
+                            <div class="viz-step">الخطوة: <span id="current-step">0</span> / <span id="total-steps">0</span></div>
+                            <div class="viz-progress">
+                                <div class="progress-bar" id="progress-bar"></div>
+                            </div>
+                            <div class="viz-description" id="viz-description">جاري التحضير...</div>
+                        </div>
+                    </div>
+                    <aside class="viz-steps-panel">
+                        <h4><i class="ri-list-check-2"></i> خطوات العملية</h4>
+                        <div class="viz-table-wrap">
+                            <table class="viz-steps-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>الأصلي</th>
+                                        <th>الناتج</th>
+                                        <th>العملية</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="viz-steps-body"></tbody>
+                            </table>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- قسم تشفير الملفات (يظهر عند الطلب) -->
+            <div id="file-vault" class="file-vault-section glass-card" style="display: none; padding: 30px; margin-top: 30px;">
+                <h2 class="vault-title"
+                    style="color:var(--text-primary); margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+                    <i class="ri-safe-2-line" style="color:var(--accent-primary);"></i> الخزنة الرقمية (AES-128)
+                </h2>
+                <form action="/encrypt-file" method="post" enctype="multipart/form-data" class="vault-form" id="vault-form">
+                    <div class="file-drop-zone">
+                        <i class="ri-upload-cloud-2-line" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <p>اضغط لاختيار ملف</p>
+                        <input type="file" name="file" id="vault-file">
+                    </div>
+                    <div class="vault-controls" style="margin-top: 20px;">
+                        <input type="text" name="key" id="vault-key" placeholder="مفتاح سري (16 خانة)" required minlength="16"
+                            maxlength="16" class="vault-key" style="margin-bottom: 15px; width: 100%;">
+                        <input type="hidden" name="token" id="vault-token">
+                        <div class="action-btn-group">
+                            <button type="submit" name="mode" value="encrypt" class="action-btn encrypt">تشفير
+                                وحفظ</button>
+                            <button type="button" id="vault-decrypt" class="action-btn decrypt" onclick="decryptLastFile()">فك
+                                تشفير الملف الأخير</button>
+                        </div>
+                        <p id="vault-status" class="vault-status" role="status"></p>
+                    </div>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="tech-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <i class="ri-shield-keyhole-line"></i> Alkhalil<span>Fa</span>
+                </div>
+                <p>منصة AlkhalilFa التعليمية للتشفير وأمن المعلومات.</p>
+            </div>
+            <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <a href="/">الموسوعة الرئيسية</a>
+                    <a href="/tool">المختبر العملي</a>
+                    <a href="/tool#file-vault">خزنة AES</a>
+                    <a href="/about">من نحن</a>
+            </div>
+            <div class="footer-links">
+                    <h4>تواصل مع المطورين</h4>
+                    <a href="mailto:anasaledrisi2025@gmail.com">أنس الإدريسي</a>
+                    <a href="mailto:khaleelalkhouly@gmail.com">Khalil Adel Alkhouli</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AlkhalilFa. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Hidden Inputs for JS Logic -->
+    <input type="hidden" id="algo" value="caesar">
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <script>
+        // === Theme Management System ===
+        let currentTheme = 'dark';
+        
+        // Load saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('cryptoTheme') || 'dark';
+            applyTheme(savedTheme, false);
+        });
+        
+        function toggleThemeMenu() {
+            const menu = document.getElementById('theme-menu');
+            if (menu.style.display === 'none' || !menu.style.display) {
+                menu.style.display = 'block';
+                menu.style.animation = 'slideDown 0.3s ease-out';
+                playSound('open');
+            } else {
+                menu.style.animation = 'slideUp 0.3s ease-out';
+                setTimeout(() => menu.style.display = 'none', 300);
+                playSound('close');
+            }
+        }
+        
+        function applyTheme(themeName, animate = true) {
+            if (currentTheme === themeName && animate) return;
+            
+            currentTheme = themeName;
+            localStorage.setItem('cryptoTheme', themeName);
+            
+            // Remove all theme classes
+            document.body.classList.remove('theme-cyber', 'theme-dark', 'theme-matrix', 'theme-sunset', 'theme-ocean', 'theme-royal');
+            
+            // Add new theme class
+            document.body.classList.add(`theme-${themeName}`);
+            
+            // Update active state
+            document.querySelectorAll('.theme-card').forEach(card => {
+                card.classList.remove('active');
+                if (card.dataset.theme === themeName) {
+                    card.classList.add('active');
+                }
+            });
+            
+            // Play sound and show notification
+            if (animate) {
+                playSound('theme');
+                showThemeNotification(themeName);
+                createThemeParticles();
+            }
+            
+            // Close menu
+            if (animate) {
+                setTimeout(() => toggleThemeMenu(), 500);
+            }
+        }
+        
+        function showThemeNotification(themeName) {
+            const notification = document.createElement('div');
+            notification.className = 'theme-notification';
+            notification.innerHTML = `
+                <i class="ri-check-circle-line"></i>
+                <span>تم تطبيق ثيم ${getThemeNameArabic(themeName)}</span>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+        
+        function getThemeNameArabic(theme) {
+            const names = {
+                'cyber': 'سايبر',
+                'dark': 'داكن',
+                'matrix': 'ماتريكس',
+                'sunset': 'غروب',
+                'ocean': 'محيط',
+                'royal': 'ملكي'
+            };
+            return names[theme] || theme;
+        }
+        
+        function createThemeParticles() {
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'theme-particle';
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                document.body.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+        
+        // === Sound Effects System ===
+        const sounds = {
+            click: () => playTone(800, 0.1, 0.05),
+            success: () => playTone(1000, 0.15, 0.1),
+            error: () => playTone(400, 0.2, 0.1),
+            open: () => playTone(600, 0.1, 0.05),
+            close: () => playTone(500, 0.1, 0.05),
+            theme: () => {
+                playTone(600, 0.05, 0.03);
+                setTimeout(() => playTone(800, 0.05, 0.03), 50);
+                setTimeout(() => playTone(1000, 0.1, 0.05), 100);
+            }
+        };
+        
+        function playSound(type) {
+            if (sounds[type]) {
+                sounds[type]();
+            }
+        }
+        
+        function playTone(frequency, duration, volume = 0.1) {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = frequency;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration);
+            } catch (e) {
+                // Silently fail if audio context is not supported
+            }
+        }
+        
+        // Add sound effects to buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.action-btn, .algo-btn, .viz-btn')) {
+                playSound('click');
+            }
+        });
+
+        // === SMART NOTIFICATIONS & TOOLTIPS SYSTEM ===
+        
+        let notificationId = 0;
+        let idleTimer = null;
+        let userActivity = {
+            lastAction: Date.now(),
+            sectionsVisited: new Set(),
+            algorithmsUsed: new Set(),
+            totalActions: 0
+        };
+        
+        // Notification System
+        function showNotification(options) {
+            const {
+                type = 'info',
+                title = 'إشعار',
+                message = '',
+                icon = 'ri-information-line',
+                duration = 5000,
+                actions = []
+            } = options;
+            
+            const container = document.getElementById('notification-container');
+            const id = ++notificationId;
+            
+            const notification = document.createElement('div');
+            notification.className = `smart-notification ${type}`;
+            notification.id = `notification-${id}`;
+            
+            let actionsHTML = '';
+            if (actions.length > 0) {
+                actionsHTML = '<div class="notification-actions">';
+                actions.forEach(action => {
+                    actionsHTML += `
+                        <button class="notification-btn ${action.type || 'secondary'}" 
+                                onclick="${action.onClick}">
+                            ${action.icon ? `<i class="${action.icon}"></i>` : ''}
+                            ${action.label}
+                        </button>
+                    `;
+                });
+                actionsHTML += '</div>';
+            }
+            
+            notification.innerHTML = `
+                <div class="notification-header">
+                    <div class="notification-title">
+                        <i class="${icon}"></i>
+                        <span>${title}</span>
+                    </div>
+                    <button class="notification-close" onclick="closeNotification(${id})">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+                <div class="notification-body">${message}</div>
+                ${actionsHTML}
+            `;
+            
+            container.appendChild(notification);
+            playSound('open');
+            
+            if (duration > 0) {
+                setTimeout(() => closeNotification(id), duration);
+            }
+            
+            return id;
+        }
+        
+        function closeNotification(id) {
+            const notification = document.getElementById(`notification-${id}`);
+            if (notification) {
+                notification.style.animation = 'slideOutRight 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }
+        }
+        
+        // Welcome Notification on Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const isFirstVisit = !localStorage.getItem('cryptoLabVisited');
+                
+                if (isFirstVisit) {
+                    showNotification({
+                        type: 'tip',
+                        title: 'مرحباً بك في المختبر الكمومي! 🎉',
+                        icon: 'ri-lightbulb-flash-line',
+                        message: 'استكشف خوارزميات التشفير المختلفة، جرب التصورات التفاعلية، وغير الثيم حسب ذوقك!',
+                        duration: 8000,
+                        actions: [
+                            {
+                                label: 'ابدأ الجولة',
+                                type: 'primary',
+                                icon: 'ri-guide-line',
+                                onClick: 'startGuidedTour()'
+                            },
+                            {
+                                label: 'استكشف بنفسي',
+                                type: 'secondary',
+                                onClick: `closeNotification(${notificationId})`
+                            }
+                        ]
+                    });
+                    
+                    localStorage.setItem('cryptoLabVisited', 'true');
+                } else {
+                    showNotification({
+                        type: 'info',
+                        title: 'مرحباً بعودتك! 👋',
+                        icon: 'ri-user-smile-line',
+                        message: 'جاهز لاستكشاف المزيد من خوارزميات التشفير؟',
+                        duration: 4000
+                    });
+                }
+            }, 1000);
+        });
+        
+        // Track User Activity
+        function trackActivity(action) {
+            userActivity.lastAction = Date.now();
+            userActivity.totalActions++;
+            
+            // Reset idle timer
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(showIdleSuggestion, 60000); // 1 minute
+        }
+        
+        // Show Idle Suggestion
+        function showIdleSuggestion() {
+            const suggestions = [
+                {
+                    title: 'جرب التصور التفاعلي! 🎨',
+                    message: 'شاهد كيف تعمل الخوارزمية خطوة بخطوة',
+                    action: 'openVisualization()',
+                    actionLabel: 'عرض التصور'
+                },
+                {
+                    title: 'غير الثيم! 🎨',
+                    message: 'اختر من بين 6 ثيمات مختلفة لتجربة بصرية أفضل',
+                    action: 'toggleThemeMenu()',
+                    actionLabel: 'اختر ثيم'
+                },
+                {
+                    title: 'جرب خوارزمية جديدة! 🔐',
+                    message: 'استكشف Vigenère أو Playfair للتشفير المتقدم',
+                    action: 'scrollToAlgorithms()',
+                    actionLabel: 'استكشف'
+                },
+                {
+                    title: 'شفر ملف! 📁',
+                    message: 'استخدم AES-128 لتشفير ملفاتك بأمان',
+                    action: 'scrollToFiles()',
+                    actionLabel: 'تشفير ملف'
+                }
+            ];
+            
+            const suggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
+            
+            const popup = document.createElement('div');
+            popup.className = 'idle-suggestion';
+            popup.id = 'idle-suggestion';
+            popup.innerHTML = `
+                <div class="idle-suggestion-content">
+                    <div class="idle-icon">💡</div>
+                    <div class="idle-text">
+                        <h4>${suggestion.title}</h4>
+                        <p>${suggestion.message}</p>
+                    </div>
+                </div>
+                <div class="idle-actions">
+                    <button class="idle-btn primary" onclick="${suggestion.action}; dismissIdleSuggestion();">
+                        ${suggestion.actionLabel}
+                    </button>
+                    <button class="idle-btn dismiss" onclick="dismissIdleSuggestion()">
+                        لاحقاً
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(popup);
+            playSound('open');
+        }
+        
+        function dismissIdleSuggestion() {
+            const popup = document.getElementById('idle-suggestion');
+            if (popup) {
+                popup.style.animation = 'slideOutRight 0.3s ease-out';
+                setTimeout(() => popup.remove(), 300);
+            }
+            trackActivity('dismiss_suggestion');
+        }
+        
+        function scrollToAlgorithms() {
+            document.querySelector('.sidebar-panel').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Guided Tour System
+        let tourStep = 0;
+        const tourSteps = [
+            {
+                element: '.sidebar-panel',
+                title: 'اختر الخوارزمية',
+                content: 'ابدأ باختيار خوارزمية التشفير التي تريد استخدامها من القائمة الجانبية',
+                icon: 'ri-list-check'
+            },
+            {
+                element: '#text',
+                title: 'أدخل النص',
+                content: 'اكتب الرسالة التي تريد تشفيرها أو فك تشفيرها',
+                icon: 'ri-text'
+            },
+            {
+                element: '#key1',
+                title: 'أدخل المفتاح',
+                content: 'المفتاح هو السر الذي يستخدم للتشفير وفك التشفير',
+                icon: 'ri-key-2-line'
+            },
+            {
+                element: '.action-btn.encrypt',
+                title: 'شفر أو فك التشفير',
+                content: 'اضغط على زر التشفير لتشفير النص، أو فك التشفير لاستعادة النص الأصلي',
+                icon: 'ri-lock-2-line'
+            },
+            {
+                element: '.action-btn.visualize',
+                title: 'شاهد التصور',
+                content: 'اضغط هنا لمشاهدة كيف تعمل الخوارزمية خطوة بخطوة بشكل مرئي',
+                icon: 'ri-eye-line'
+            },
+            {
+                element: '.theme-toggle',
+                title: 'غير الثيم',
+                content: 'اختر من بين 6 ثيمات مختلفة لتخصيص تجربتك البصرية',
+                icon: 'ri-palette-line'
+            }
+        ];
+        
+        function startGuidedTour() {
+            tourStep = 0;
+            showTourStep();
+        }
+        
+        function showTourStep() {
+            if (tourStep >= tourSteps.length) {
+                endTour();
+                return;
+            }
+            
+            const step = tourSteps[tourStep];
+            const element = document.querySelector(step.element);
+            
+            if (!element) {
+                tourStep++;
+                showTourStep();
+                return;
+            }
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'tour-overlay';
+            overlay.id = 'tour-overlay';
+            overlay.onclick = () => {}; // Prevent closing on click
+            
+            // Create spotlight
+            const rect = element.getBoundingClientRect();
+            const spotlight = document.createElement('div');
+            spotlight.className = 'tour-spotlight';
+            spotlight.style.top = (rect.top - 10) + 'px';
+            spotlight.style.left = (rect.left - 10) + 'px';
+            spotlight.style.width = (rect.width + 20) + 'px';
+            spotlight.style.height = (rect.height + 20) + 'px';
+            
+            // Create popup
+            const popup = document.createElement('div');
+            popup.className = 'tour-popup';
+            popup.id = 'tour-popup';
+            
+            // Position popup
+            const popupTop = rect.bottom + 20;
+            const popupLeft = Math.max(20, Math.min(window.innerWidth - 470, rect.left));
+            popup.style.top = popupTop + 'px';
+            popup.style.left = popupLeft + 'px';
+            
+            popup.innerHTML = `
+                <div class="tour-header">
+                    <div class="tour-icon">
+                        <i class="${step.icon}"></i>
+                    </div>
+                    <div class="tour-title">
+                        <h3>${step.title}</h3>
+                        <div class="tour-step">الخطوة ${tourStep + 1} من ${tourSteps.length}</div>
+                    </div>
+                </div>
+                <div class="tour-content">${step.content}</div>
+                <div class="tour-actions">
+                    <button class="tour-btn skip" onclick="endTour()">
+                        <i class="ri-close-line"></i> تخطي
+                    </button>
+                    <button class="tour-btn next" onclick="nextTourStep()">
+                        ${tourStep < tourSteps.length - 1 ? 'التالي' : 'إنهاء'}
+                        <i class="ri-arrow-left-line"></i>
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(spotlight);
+            document.body.appendChild(popup);
+            
+            // Scroll element into view
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            playSound('open');
+        }
+        
+        function nextTourStep() {
+            // Remove current tour elements
+            const overlay = document.getElementById('tour-overlay');
+            const spotlight = document.querySelector('.tour-spotlight');
+            const popup = document.getElementById('tour-popup');
+            
+            if (overlay) overlay.remove();
+            if (spotlight) spotlight.remove();
+            if (popup) popup.remove();
+            
+            tourStep++;
+            
+            if (tourStep < tourSteps.length) {
+                setTimeout(showTourStep, 300);
+            } else {
+                endTour();
+            }
+        }
+        
+        function endTour() {
+            const overlay = document.getElementById('tour-overlay');
+            const spotlight = document.querySelector('.tour-spotlight');
+            const popup = document.getElementById('tour-popup');
+            
+            if (overlay) overlay.remove();
+            if (spotlight) spotlight.remove();
+            if (popup) popup.remove();
+            
+            showNotification({
+                type: 'success',
+                title: 'أحسنت! 🎉',
+                icon: 'ri-trophy-line',
+                message: 'الآن أنت جاهز لاستكشاف عالم التشفير!',
+                duration: 4000
+            });
+            
+            playSound('success');
+        }
+        
+        // Context-Aware Notifications
+        function showAlgorithmTip(algo) {
+            const tips = {
+                'caesar': {
+                    title: 'نصيحة: شيفرة قيصر',
+                    message: 'جرب إزاحة 13 (ROT13) - إنها حالة خاصة حيث التشفير وفك التشفير متطابقان!',
+                    icon: 'ri-lightbulb-line'
+                },
+                'vigenere': {
+                    title: 'نصيحة: Vigenère',
+                    message: 'كلمة المفتاح الأطول = تشفير أقوى! جرب استخدام جملة كاملة.',
+                    icon: 'ri-lightbulb-line'
+                },
+                'playfair': {
+                    title: 'نصيحة: Playfair',
+                    message: 'هذه الشيفرة تعمل على أزواج الحروف. تأكد من أن نصك يحتوي على عدد زوجي من الأحرف!',
+                    icon: 'ri-lightbulb-line'
+                },
+                'affine': {
+                    title: 'نصيحة: Affine',
+                    message: 'المعامل A يجب أن يكون فردياً ومتبايناً مع 26 للحصول على تشفير صحيح.',
+                    icon: 'ri-lightbulb-line'
+                },
+                'des': {
+                    title: 'نصيحة: DES',
+                    message: 'DES يستخدم مفتاح 8 أحرف بالضبط. إنه معيار قديم لكنه رائع للتعلم!',
+                    icon: 'ri-lightbulb-line'
+                }
+            };
+            
+            const tip = tips[algo];
+            if (tip && !userActivity.algorithmsUsed.has(algo)) {
+                setTimeout(() => {
+                    showNotification({
+                        type: 'tip',
+                        ...tip,
+                        duration: 7000
+                    });
+                }, 1000);
+                
+                userActivity.algorithmsUsed.add(algo);
+            }
+        }
+        
+        // Track algorithm selection
+        const originalSelectAlgo = window.selectAlgo;
+        window.selectAlgo = function(algoName, selectedButton) {
+            originalSelectAlgo(algoName, selectedButton);
+            trackActivity('select_algorithm');
+            showAlgorithmTip(algoName);
+        };
+        
+        // Track encryption/decryption
+        const originalRun = window.run;
+        window.run = async function(mode) {
+            trackActivity('run_crypto');
+            const succeeded = await originalRun(mode);
+            if (!succeeded) return;
+            
+            // Show success notification
+            setTimeout(() => {
+                showNotification({
+                    type: 'success',
+                    title: mode === 'encrypt' ? 'تم التشفير بنجاح! ✓' : 'تم فك التشفير بنجاح! ✓',
+                    icon: mode === 'encrypt' ? 'ri-lock-line' : 'ri-unlock-line',
+                    message: 'يمكنك الآن نسخ النتيجة أو تجربة خوارزمية أخرى.',
+                    duration: 3000
+                });
+            }, 500);
+        };
+        
+        // Initialize idle tracking
+        document.addEventListener('keypress', () => trackActivity('keyboard'));
+        document.addEventListener('pointerdown', () => trackActivity('pointer'));
+        document.addEventListener('click', () => trackActivity('click'));
+        document.addEventListener('scroll', () => trackActivity('scroll'));
+        
+        // Start idle timer
+        idleTimer = setTimeout(showIdleSuggestion, 60000);
+
+        // === Visualization Engine ===
+        let vizCanvas, vizCtx;
+        let vizAnimationId = null;
+        let vizPaused = false;
+        let vizCurrentStep = 0;
+        let vizTotalSteps = 0;
+        let vizData = [];
+        
+        function initVisualization() {
+            vizCanvas = document.getElementById('animation-canvas');
+            vizCtx = vizCanvas.getContext('2d');
+            
+            // Set canvas size
+            const container = document.getElementById('viz-canvas');
+            vizCanvas.width = container.clientWidth - 40;
+            vizCanvas.height = 400;
+        }
+        
+        async function openVisualization() {
+            const text = document.getElementById('text').value;
+            const key = document.getElementById('key1').value;
+            const algo = document.getElementById('algo').value;
+            const keylessAlgo = ['atbash', 'rot13', 'rsa'].includes(algo);
+            
+            if (!text || (!key && !keylessAlgo)) {
+                alert("الرجاء إدخال النص والمفتاح أولاً");
+                return;
+            }
+            
+            let output = text;
+            try {
+                const response = await fetch('/process', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        algo,
+                        mode: 'encrypt',
+                        text,
+                        key1: key,
+                        key1_str: key,
+                        key2: document.getElementById('key2').value
+                    })
+                });
+                const data = await response.json();
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+                output = data.result;
+            } catch (error) {
+                alert('تعذر تجهيز التصور، حاول مرة أخرى');
+                return;
+            }
+
+            document.getElementById('viz-panel').style.display = 'block';
+            document.getElementById('viz-panel').style.animation = 'slideDown 0.5s ease-out';
+            initVisualization();
+            prepareVisualizationData(text, key, algo, output);
+            startVisualization();
+        }
+        
+        function prepareVisualizationData(text, key, algo, output) {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const keyUpper = key.toUpperCase();
+            let keyIndex = 0;
+            vizData = [];
+            vizCurrentStep = 0;
+
+            if (['des', 'des3', 'rsa'].includes(algo)) {
+                vizData.push({
+                    original: text,
+                    encrypted: algo === 'rsa' ? 'RSA BLOCK' : `${algo.toUpperCase()} BLOCK`,
+                    oldIndex: 0,
+                    newIndex: 0,
+                    shift: 0,
+                    description: algo === 'rsa'
+                        ? 'تشفير كتلة RSA-OAEP بالمفتاح العام'
+                        : `معالجة كتلة ${algo === 'des3' ? '3DES' : 'DES'} عبر CBC`
+                });
+                vizTotalSteps = 1;
+                document.getElementById('total-steps').textContent = vizTotalSteps;
+                renderVisualizationTable();
+                return;
+            }
+
+            for (let i = 0; i < text.length; i++) {
+                const original = text[i];
+                const upper = original.toUpperCase();
+                if (!alphabet.includes(upper)) continue;
+
+                const oldIndex = alphabet.indexOf(upper);
+                let newIndex = oldIndex;
+                let encrypted = output[i] || upper;
+                let shift = 0;
+                let keyChar = '';
+                let description = '';
+
+                if (algo === 'caesar') {
+                    shift = Number.parseInt(key, 10) || 0;
+                    newIndex = (oldIndex + shift + 26) % 26;
+                    encrypted = alphabet[newIndex];
+                } else if (algo === 'vigenere') {
+                    keyChar = keyUpper[keyIndex % keyUpper.length] || 'A';
+                    shift = Math.max(0, alphabet.indexOf(keyChar));
+                    newIndex = (oldIndex + shift) % 26;
+                    encrypted = alphabet[newIndex];
+                    keyIndex++;
+                } else if (algo === 'affine') {
+                    const a = Number.parseInt(key, 10) || 1;
+                    const b = Number.parseInt(document.getElementById('key2').value, 10) || 0;
+                    newIndex = (a * oldIndex + b) % 26;
+                    if (newIndex < 0) newIndex += 26;
+                    encrypted = alphabet[newIndex];
+                    description = `تطبيق العلاقة (${a} × ${oldIndex} + ${b}) mod 26`;
+                } else if (algo === 'atbash') {
+                    newIndex = 25 - oldIndex;
+                    encrypted = alphabet[newIndex];
+                } else if (algo === 'rot13') {
+                    shift = 13;
+                    newIndex = (oldIndex + shift) % 26;
+                    encrypted = alphabet[newIndex];
+                } else if (algo === 'monoalphabetic') {
+                    encrypted = output[i] || upper;
+                    const encryptedUpper = encrypted.toUpperCase();
+                    newIndex = alphabet.includes(encryptedUpper) ? alphabet.indexOf(encryptedUpper) : oldIndex;
+                    description = 'استبدال الحرف بحرفه المقابل في المفتاح الأبجدي';
+                } else if (algo === 'playfair') {
+                    encrypted = output[i] || upper;
+                    const encryptedUpper = encrypted.toUpperCase();
+                    newIndex = alphabet.includes(encryptedUpper) ? alphabet.indexOf(encryptedUpper) : oldIndex;
+                    description = 'توضيح حركة زوج الحروف داخل مصفوفة Playfair';
+                }
+
+                vizData.push({
+                    original: original,
+                    encrypted: original === upper ? encrypted : encrypted.toLowerCase(),
+                    oldIndex: oldIndex,
+                    newIndex: newIndex,
+                    shift: shift,
+                    keyChar: keyChar,
+                    keyShift: shift,
+                    description: description,
+                    position: i
+                });
+            }
+
+            if (!vizData.length) {
+                vizData.push({
+                    original: text,
+                    encrypted: algo === 'des' ? 'BLOCK' : text,
+                    oldIndex: 0,
+                    newIndex: 0,
+                    shift: 0,
+                    description: 'معالجة البيانات ككتلة كاملة'
+                });
+            }
+
+            vizTotalSteps = vizData.length;
+            document.getElementById('total-steps').textContent = vizTotalSteps;
+            renderVisualizationTable();
+        }
+
+        function renderVisualizationTable() {
+            const body = document.getElementById('viz-steps-body');
+            body.innerHTML = '';
+            vizData.forEach((step, index) => {
+                const row = document.createElement('tr');
+                row.dataset.step = index;
+                const operation = step.description || (step.keyChar
+                    ? `مفتاح ${step.keyChar}`
+                    : step.shift
+                        ? `إزاحة ${step.shift}`
+                        : 'تحويل');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td class="viz-original"></td>
+                    <td class="viz-encrypted"></td>
+                    <td class="viz-operation"></td>
+                `;
+                row.querySelector('.viz-original').textContent = step.original;
+                row.querySelector('.viz-encrypted').textContent = step.encrypted;
+                row.querySelector('.viz-operation').textContent = operation;
+                body.appendChild(row);
+            });
+        }
+
+        function updateVisualizationTable(stepIndex) {
+            document.querySelectorAll('#viz-steps-body tr').forEach((row, index) => {
+                row.classList.toggle('current', index === stepIndex);
+            });
+            const currentRow = document.querySelector(`#viz-steps-body tr[data-step="${stepIndex}"]`);
+            if (currentRow) currentRow.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+        
+        function startVisualization() {
+            vizPaused = false;
+            vizCurrentStep = 0;
+            document.getElementById('current-step').textContent = '0';
+            document.getElementById('progress-bar').style.width = '0%';
+            animateStep();
+        }
+        
+        function animateStep() {
+            if (vizPaused || vizCurrentStep >= vizTotalSteps) {
+                if (vizCurrentStep >= vizTotalSteps) {
+                    showCompletionEffect();
+                }
+                return;
+            }
+            
+            const step = vizData[vizCurrentStep];
+            drawVisualizationStep(step, vizCurrentStep);
+            updateVisualizationTable(vizCurrentStep);
+            
+            vizCurrentStep++;
+            document.getElementById('current-step').textContent = vizCurrentStep;
+            const progress = (vizCurrentStep / vizTotalSteps) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            
+            vizAnimationId = setTimeout(animateStep, 800);
+        }
+        
+        function drawVisualizationStep(step, stepIndex) {
+            const ctx = vizCtx;
+            const width = vizCanvas.width;
+            const height = vizCanvas.height;
+            
+            // Clear canvas with fade effect
+            ctx.fillStyle = 'rgba(10, 14, 23, 0.3)';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw alphabet wheel
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const radius = 120;
+            
+            // Draw outer circle
+            ctx.strokeStyle = 'rgba(0, 243, 255, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Draw alphabet letters
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for (let i = 0; i < 26; i++) {
+                const angle = (i * (Math.PI * 2) / 26) - Math.PI / 2;
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+                
+                ctx.font = '14px Rajdhani';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                
+                if (i === step.oldIndex) {
+                    ctx.fillStyle = '#00f3ff';
+                    ctx.shadowColor = '#00f3ff';
+                    ctx.shadowBlur = 20;
+                } else if (i === step.newIndex) {
+                    ctx.fillStyle = '#10b981';
+                    ctx.shadowColor = '#10b981';
+                    ctx.shadowBlur = 20;
+                } else {
+                    ctx.fillStyle = 'rgba(148, 163, 184, 0.5)';
+                    ctx.shadowBlur = 0;
+                }
+                
+                ctx.fillText(alphabet[i], x, y);
+            }
+            
+            ctx.shadowBlur = 0;
+            
+            // Draw transformation arrow
+            const startAngle = (step.oldIndex * (Math.PI * 2) / 26) - Math.PI / 2;
+            const endAngle = (step.newIndex * (Math.PI * 2) / 26) - Math.PI / 2;
+            
+            const startX = centerX + Math.cos(startAngle) * (radius - 30);
+            const startY = centerY + Math.sin(startAngle) * (radius - 30);
+            const endX = centerX + Math.cos(endAngle) * (radius - 30);
+            const endY = centerY + Math.sin(endAngle) * (radius - 30);
+            
+            ctx.strokeStyle = '#bc13fe';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.stroke();
+            
+            // Draw arrow head
+            const arrowAngle = Math.atan2(endY - startY, endX - startX);
+            ctx.beginPath();
+            ctx.moveTo(endX, endY);
+            ctx.lineTo(endX - 10 * Math.cos(arrowAngle - Math.PI / 6), endY - 10 * Math.sin(arrowAngle - Math.PI / 6));
+            ctx.lineTo(endX - 10 * Math.cos(arrowAngle + Math.PI / 6), endY - 10 * Math.sin(arrowAngle + Math.PI / 6));
+            ctx.closePath();
+            ctx.fillStyle = '#bc13fe';
+            ctx.fill();
+            
+            // Draw text info
+            ctx.font = 'bold 24px Rajdhani';
+            ctx.fillStyle = '#00f3ff';
+            ctx.textAlign = 'center';
+            ctx.fillText(step.original, centerX - 80, 50);
+            
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '20px Rajdhani';
+            ctx.fillText('→', centerX, 50);
+            
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 24px Rajdhani';
+            ctx.fillText(step.encrypted, centerX + 80, 50);
+            
+            // Update description
+            let description = '';
+            if (step.description) {
+                description = step.description;
+            } else if (step.keyChar) {
+                description = `تشفير "${step.original}" باستخدام مفتاح "${step.keyChar}" (إزاحة ${step.keyShift}) = "${step.encrypted}"`;
+            } else {
+                description = `إزاحة "${step.original}" بمقدار ${step.shift} = "${step.encrypted}"`;
+            }
+            document.getElementById('viz-description').textContent = description;
+        }
+        
+        function showCompletionEffect() {
+            const ctx = vizCtx;
+            const width = vizCanvas.width;
+            const height = vizCanvas.height;
+            
+            // Draw completion message
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.font = 'bold 36px Rajdhani';
+            ctx.fillStyle = '#10b981';
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#10b981';
+            ctx.shadowBlur = 30;
+            ctx.fillText('✓ اكتمل التشفير!', width / 2, height / 2);
+            
+            document.getElementById('viz-description').textContent = 'تم إكمال جميع الخطوات بنجاح!';
+        }
+        
+        function pauseVisualization() {
+            vizPaused = true;
+            document.getElementById('pause-btn').style.display = 'none';
+            document.getElementById('play-btn').style.display = 'flex';
+            if (vizAnimationId) clearTimeout(vizAnimationId);
+        }
+        
+        function playVisualization() {
+            vizPaused = false;
+            document.getElementById('pause-btn').style.display = 'flex';
+            document.getElementById('play-btn').style.display = 'none';
+            animateStep();
+        }
+        
+        function restartVisualization() {
+            if (vizAnimationId) clearTimeout(vizAnimationId);
+            startVisualization();
+            document.getElementById('pause-btn').style.display = 'flex';
+            document.getElementById('play-btn').style.display = 'none';
+        }
+        
+        function closeVisualization() {
+            if (vizAnimationId) clearTimeout(vizAnimationId);
+            document.getElementById('viz-panel').style.display = 'none';
+            vizPaused = false;
+            vizCurrentStep = 0;
+        }
+
+        // === Statistics Tracking ===
+        let encryptCount = 0;
+        let decryptCount = 0;
+        let lastResult = '';
+        let lastEncryption = null;
+
+        function getCryptoSettings() {
+            return {
+                algo: document.getElementById('algo').value,
+                key1: document.getElementById('key1').value,
+                key2: document.getElementById('key2').value
+            };
+        }
+
+        ['text', 'key1', 'key2'].forEach((inputId) => {
+            document.getElementById(inputId).addEventListener('input', () => {
+                lastEncryption = null;
+            });
+        });
+        
+        function updateStats(mode, time) {
+            if (mode === 'encrypt') {
+                encryptCount++;
+                document.getElementById('encrypt-count').textContent = encryptCount;
+            } else {
+                decryptCount++;
+                document.getElementById('decrypt-count').textContent = decryptCount;
+            }
+            document.getElementById('process-time').textContent = time + 'ms';
+        }
+        
+        function clearAll() {
+            document.getElementById('text').value = '';
+            document.getElementById('key1').value = '';
+            document.getElementById('key2').value = '';
+            document.getElementById('idle-state').style.display = 'flex';
+            document.getElementById('output-box').style.display = 'none';
+            document.getElementById('copy-btn').style.display = 'none';
+            lastResult = '';
+            lastEncryption = null;
+            
+            // Animation
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.style.animation = 'shake 0.3s ease-in-out';
+                setTimeout(() => input.style.animation = '', 300);
+            });
+        }
+        
+        function copyResult() {
+            if (lastResult) {
+                navigator.clipboard.writeText(lastResult).then(() => {
+                    const btn = document.getElementById('copy-btn');
+                    const originalHTML = btn.innerHTML;
+                    btn.innerHTML = '<i class="ri-check-line"></i> تم النسخ!';
+                    btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.style.background = '';
+                    }, 2000);
+                });
+            }
+        }
+
+        // === Enhanced Interactive Effects ===
+        
+        // Add particle effects on button clicks
+        function createParticles(x, y) {
+            const colors = ['#00f3ff', '#bc13fe', '#10b981', '#ec4899'];
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.borderRadius = '50%';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '9999';
+                particle.style.boxShadow = `0 0 10px ${colors[Math.floor(Math.random() * colors.length)]}`;
+                document.body.appendChild(particle);
+                
+                const angle = (Math.PI * 2 * i) / 8;
+                const velocity = 2 + Math.random() * 2;
+                let posX = x;
+                let posY = y;
+                let opacity = 1;
+                
+                const animate = () => {
+                    posX += Math.cos(angle) * velocity;
+                    posY += Math.sin(angle) * velocity;
+                    opacity -= 0.02;
+                    
+                    particle.style.left = posX + 'px';
+                    particle.style.top = posY + 'px';
+                    particle.style.opacity = opacity;
+                    
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        particle.remove();
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+        }
+        
+        // Add click effects to buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('action-btn') || e.target.classList.contains('algo-btn')) {
+                createParticles(e.clientX, e.clientY);
+            }
+        });
+
+        // === منطق التفاعل ===
+
+        // Validate Key Input based on algorithm
+        function validateKeyInput() {
+            const algo = document.getElementById('algo').value;
+            const key1Input = document.getElementById('key1');
+            
+            if (algo === 'caesar' || algo === 'affine') {
+                key1Input.value = key1Input.value.replace(/[^-0-9]/g, '');
+            } else if (algo === 'vigenere' || algo === 'playfair' || algo === 'monoalphabetic') {
+                key1Input.value = key1Input.value.replace(/[^a-zA-Z]/g, '');
+            } else if (algo === 'des' || algo === 'des3') {
+                key1Input.value = key1Input.value.replace(/[^a-zA-Z0-9]/g, '');
+            }
+        }
+
+        // تغيير الخوارزمية
+        function selectAlgo(algoName, selectedButton) {
+            document.getElementById('algo').value = algoName;
+            lastEncryption = null;
+
+            document.getElementById('crypto-interface').style.display = 'grid';
+            document.getElementById('file-vault').style.display = 'none';
+
+            const workspace = document.querySelector('.workspace-panel');
+            workspace.classList.remove('algo-switching');
+            requestAnimationFrame(() => workspace.classList.add('algo-switching'));
+            setTimeout(() => workspace.classList.remove('algo-switching'), 540);
+
+            // تحديث الأزرار
+            document.querySelectorAll('.algo-btn').forEach(b => b.classList.remove('active'));
+            if (selectedButton) selectedButton.classList.add('active');
+
+            // تحديث العناوين والحقول
+            const k1Label = document.getElementById('k1-label');
+            const k1Input = document.getElementById('key1');
+            const k2Wrapper = document.getElementById('key2-wrapper');
+            const title = document.getElementById('algo-title');
+            const description = document.getElementById('algo-desc');
+
+            const k1Wrapper = document.getElementById('key1-wrapper');
+
+            k1Input.value = "";
+            k1Input.maxLength = 64;
+            k2Wrapper.style.display = 'none';
+            k1Wrapper.style.display = 'block';
+
+            if (algoName === 'caesar') {
+                title.innerText = "Caesar Cipher";
+                description.innerText = "خوارزمية كلاسيكية: إزاحة ثابتة للحروف.";
+                k1Label.innerText = "مقدار الإزاحة (رقم)";
+                k1Input.type = "number";
+                k1Input.pattern = "-?[0-9]+";
+                k1Input.setAttribute('oninput', 'validateKeyInput()');
+            } else if (algoName === 'rot13') {
+                title.innerText = "ROT-13 Algorithm";
+                description.innerText = "خوارزمية كلاسيكية، وهي حالة خاصة من Caesar.";
+                k1Wrapper.style.display = 'none';
+            } else if (algoName === 'atbash') {
+                title.innerText = "Atbash Cipher";
+                description.innerText = "خوارزمية كلاسيكية تعكس ترتيب الأبجدية.";
+                k1Wrapper.style.display = 'none';
+            } else if (algoName === 'vigenere') {
+                title.innerText = "Vigenère Cipher";
+                description.innerText = "خوارزمية كلاسيكية متعددة الأبجديات تعتمد على كلمة مفتاحية.";
+                k1Label.innerText = "كلمة السر (حروف)";
+                k1Input.type = "text";
+                k1Input.pattern = "[a-zA-Z]*";
+                k1Input.setAttribute('oninput', 'validateKeyInput()');
+            } else if (algoName === 'playfair') {
+                title.innerText = "Playfair Cipher";
+                description.innerText = "خوارزمية كلاسيكية تعالج أزواج الحروف داخل مصفوفة 5×5.";
+                k1Label.innerText = "كلمة مفتاحية (نص)";
+                k1Input.type = "text";
+                k1Input.pattern = "[a-zA-Z]*";
+                k1Input.setAttribute('oninput', 'validateKeyInput()');
+            } else if (algoName === 'affine') {
+                title.innerText = "Affine Cipher";
+                description.innerText = "خوارزمية كلاسيكية تستخدم دالة خطية modulo 26.";
+                k1Label.innerText = "المعامل A (فردي)";
+                k1Input.type = "number";
+                k1Input.pattern = "-?[0-9]+";
+                k1Input.setAttribute('oninput', 'validateKeyInput()');
+                k2Wrapper.style.display = 'block';
+            } else if (algoName === 'des') {
+                title.innerText = "DES Standard";
+                description.innerText = "خوارزمية متماثلة قديمة، مضافة للتعلم وليست للاستخدام الحديث.";
+                k1Label.innerText = "المفتاح (8 رموز)";
+                k1Input.type = "text";
+                k1Input.maxLength = 8;
+                k1Input.pattern = "[a-zA-Z0-9]{8}";
+                k1Input.setAttribute('oninput', 'validateKeyInput()');
+            } else if (algoName === 'des3') {
+                title.innerText = "3DES Standard";
+                description.innerText = "خوارزمية متماثلة انتقالية قديمة تطبق DES ثلاث مرات.";
+                k1Label.innerText = "المفتاح (24 رمزًا)";
+                k1Input.type = "text";
+                k1Input.maxLength = 24;
+                k1Input.pattern = "[a-zA-Z0-9]{24}";
+                k1Input.setAttribute('oninput', 'validateKeyInput()');
+            } else if (algoName === 'monoalphabetic') {
+                title.innerText = "Monoalphabetic Cipher";
+                description.innerText = "خوارزمية كلاسيكية تستبدل كل حرف بحرف ثابت من أبجدية المفتاح.";
+                k1Label.innerText = "مفتاح أبجدي (26 حرفًا مختلفة)";
+                k1Input.type = "text";
+                k1Input.maxLength = 26;
+                k1Input.pattern = "[a-zA-Z]{26}";
+                k1Input.setAttribute('oninput', 'validateKeyInput()');
+            } else if (algoName === 'rsa') {
+                title.innerText = "RSA-OAEP";
+                description.innerText = "خوارزمية حديثة غير متماثلة تستخدم مفتاحًا عامًا وخاصًا.";
+                k1Wrapper.style.display = 'none';
+            }
+        }
+
+        function selectFileMode(selectedButton) {
+            lastEncryption = null;
+            const workspace = document.querySelector('.workspace-panel');
+            workspace.classList.remove('algo-switching');
+            requestAnimationFrame(() => workspace.classList.add('algo-switching'));
+            setTimeout(() => workspace.classList.remove('algo-switching'), 540);
+            document.querySelectorAll('.algo-btn').forEach(button => button.classList.remove('active'));
+            selectedButton.classList.add('active');
+            document.getElementById('crypto-interface').style.display = 'none';
+            document.getElementById('viz-panel').style.display = 'none';
+            const vault = document.getElementById('file-vault');
+            vault.style.display = 'block';
+            vault.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // التمرير لقسم الملفات
+        function scrollToFiles() {
+            selectFileMode(document.querySelector('.file-mode'));
+        }
+
+        async function run(mode) {
+            const settings = getCryptoSettings();
+            const algo = settings.algo;
+            const k1 = settings.key1;
+            const k2 = settings.key2;
+            const typedText = document.getElementById('text').value;
+            const canUseLastEncryption = mode === 'decrypt'
+                && lastEncryption
+                && lastEncryption.algo === settings.algo
+                && lastEncryption.key1 === settings.key1
+                && lastEncryption.key2 === settings.key2;
+            const text = canUseLastEncryption ? lastEncryption.result : typedText;
+
+            if (!text || (!k1 && !['atbash', 'rot13', 'rsa'].includes(algo))) {
+                return alert("الرجاء تعبئة البيانات المطلوبة");
+            }
+
+            const startTime = performance.now();
+
+            // Enhanced Animation
+            document.getElementById('idle-state').style.display = 'none';
+            const outputBox = document.getElementById('output-box');
+            outputBox.style.display = 'block';
+            outputBox.style.animation = 'fadeIn 0.5s ease-in-out';
+            
+            const finalRes = document.getElementById('final-res');
+            finalRes.innerHTML = '<span class="loading-dots">PROCESSING</span>';
+            
+            // Add processing animation
+            finalRes.style.animation = 'textGlow 1s ease-in-out infinite';
+
+            try {
+                const response = await fetch('/process', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        algo: algo, text: text, mode: mode, key1: k1, key1_str: k1, key2: k2
+                    })
+                });
+
+                const data = await response.json();
+                const endTime = performance.now();
+                const processTime = Math.round(endTime - startTime);
+
+                if (data.error) {
+                    finalRes.textContent = `ERROR: ${data.error}`;
+                    finalRes.style.color = '#ef4444';
+                    finalRes.style.animation = 'shake 0.5s ease-in-out';
+                    return false;
+                } else {
+                    // Success animation
+                    finalRes.style.animation = 'none';
+                    lastResult = data.result;
+                    if (mode === 'encrypt') {
+                        lastEncryption = { ...settings, result: data.result };
+                    } else if (canUseLastEncryption) {
+                        document.getElementById('text').value = data.result;
+                        lastEncryption = null;
+                    }
+                    document.getElementById('copy-btn').style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        finalRes.innerText = data.result;
+                        finalRes.style.animation = 'successPulse 0.6s ease-in-out';
+                        
+                        // Update statistics
+                        updateStats(mode, processTime);
+                        
+                        // Animate steps
+                        const stepsLog = document.getElementById('steps-log');
+                        stepsLog.innerHTML = '';
+                        data.steps.forEach((step, index) => {
+                            setTimeout(() => {
+                                const stepDiv = document.createElement('div');
+                                stepDiv.textContent = `> ${step}`;
+                                stepDiv.style.opacity = '0';
+                                stepDiv.style.transform = 'translateX(-20px)';
+                                stepsLog.appendChild(stepDiv);
+                                
+                                setTimeout(() => {
+                                    stepDiv.style.transition = 'all 0.3s ease';
+                                    stepDiv.style.opacity = '1';
+                                    stepDiv.style.transform = 'translateX(0)';
+                                }, 50);
+                            }, index * 100);
+                        });
+                    }, 100);
+                    return true;
+                }
+            } catch (e) {
+                finalRes.innerHTML = '<span style="color:#ef4444;">Connection Error</span>';
+                finalRes.style.animation = 'shake 0.5s ease-in-out';
+                return false;
+            }
+        }
+
+        function setVaultStatus(message, isError = false) {
+            const status = document.getElementById('vault-status');
+            status.textContent = message;
+            status.classList.toggle('error', isError);
+        }
+
+        function downloadBlob(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        async function readVaultResponse(response) {
+            const contentType = response.headers.get('content-type') || '';
+            if (!response.ok) {
+                const data = contentType.includes('application/json')
+                    ? await response.json()
+                    : { error: 'تعذر تنفيذ عملية الملف' };
+                throw new Error(data.error || 'تعذر تنفيذ عملية الملف');
+            }
+            return contentType.includes('application/json') ? response.json() : response.blob();
+        }
+
+        document.getElementById('vault-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const fileInput = document.getElementById('vault-file');
+            const keyInput = document.getElementById('vault-key');
+            if (!fileInput.files.length || keyInput.value.length !== 16) {
+                setVaultStatus('اختر ملفًا وأدخل مفتاحًا من 16 خانة', true);
+                return;
+            }
+
+            const formData = new FormData(event.currentTarget);
+            formData.set('mode', 'encrypt');
+            setVaultStatus('جاري تشفير الملف...');
+            try {
+                const response = await fetch('/encrypt-file', { method: 'POST', body: formData });
+                const data = await readVaultResponse(response);
+                document.getElementById('vault-token').value = data.token;
+                const encryptedResponse = await fetch(data.download_url);
+                const encryptedBlob = await readVaultResponse(encryptedResponse);
+                downloadBlob(encryptedBlob, data.filename);
+                setVaultStatus('تم التشفير. يمكنك فك تشفير الملف الأخير خلال 3 دقائق.');
+            } catch (error) {
+                setVaultStatus(error.message, true);
+            }
+        });
+
+        async function decryptLastFile() {
+            const token = document.getElementById('vault-token').value;
+            const key = document.getElementById('vault-key').value;
+            if (!token || key.length !== 16) {
+                setVaultStatus('شفّر ملفًا أولًا وأدخل نفس المفتاح لفك التشفير', true);
+                return;
+            }
+
+            const formData = new FormData();
+            formData.set('mode', 'decrypt');
+            formData.set('key', key);
+            formData.set('token', token);
+            setVaultStatus('جاري فك تشفير الملف...');
+            try {
+                const response = await fetch('/encrypt-file', { method: 'POST', body: formData });
+                const blob = await readVaultResponse(response);
+                downloadBlob(blob, `decrypted_${document.getElementById('vault-file').files[0]?.name || 'file'}`);
+                document.getElementById('vault-token').value = '';
+                setVaultStatus('تم فك التشفير وتنزيل الملف.');
+            } catch (error) {
+                setVaultStatus(error.message, true);
+            }
+        }
+        
+        // Add CSS animations dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+            
+            @keyframes successPulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+
+</html>
