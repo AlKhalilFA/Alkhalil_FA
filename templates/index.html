@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto.Space | الموسوعة الشاملة</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body class="tech-theme theme-dark performance-lite">
+
+    <div class="tech-grid"></div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Navigation with Theme System -->
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <a href="/" class="brand-logo">
+                <i class="ri-planet-line logo-spin"></i> Alkhalil<span style="color:var(--neon-cyan)">Fa</span>
+            </a>
+            <div class="nav-actions">
+                <a href="#classic" class="nav-btn">الكلاسيكية</a>
+                <a href="#modern" class="nav-btn">الحديثة</a>
+                <a href="#quick-links" class="nav-btn">روابط سريعة</a>
+                <a href="/about" class="nav-btn">من نحن</a>
+                <button class="theme-toggle" onclick="toggleThemeMenu()" title="تغيير الثيم">
+                    <i class="ri-palette-line"></i>
+                </button>
+                <a href="/tool" class="nav-btn"
+                    style="background:var(--neon-green); color:black !important; border:none; font-weight:bold;">المختبر
+                    العملي <i class="ri-flask-line"></i></a>
+            </div>
+        </div>
+
+        <!-- قائمة الثيمات -->
+        <div class="theme-menu" id="theme-menu" style="display: none;">
+            <div class="theme-menu-header">
+                <h4><i class="ri-palette-line"></i> اختر الثيم</h4>
+                <button onclick="toggleThemeMenu()" class="close-theme-menu">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="theme-options">
+                <div class="theme-card" onclick="applyTheme('cyber')" data-theme="cyber">
+                    <div class="theme-preview cyber-preview"></div>
+                    <div class="theme-info">
+                        <h5>سايبر</h5>
+                        <p>نيون وتأثيرات مستقبلية</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+
+                <div class="theme-card active" onclick="applyTheme('dark')" data-theme="dark">
+                    <div class="theme-preview dark-preview"></div>
+                    <div class="theme-info">
+                        <h5>داكن</h5>
+                        <p>التصميم الافتراضي</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+
+                <div class="theme-card" onclick="applyTheme('matrix')" data-theme="matrix">
+                    <div class="theme-preview matrix-preview"></div>
+                    <div class="theme-info">
+                        <h5>ماتريكس</h5>
+                        <p>أخضر رقمي كلاسيكي</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+
+                <div class="theme-card" onclick="applyTheme('sunset')" data-theme="sunset">
+                    <div class="theme-preview sunset-preview"></div>
+                    <div class="theme-info">
+                        <h5>غروب</h5>
+                        <p>برتقالي وبنفسجي دافئ</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+
+                <div class="theme-card" onclick="applyTheme('ocean')" data-theme="ocean">
+                    <div class="theme-preview ocean-preview"></div>
+                    <div class="theme-info">
+                        <h5>محيط</h5>
+                        <p>أزرق هادئ ومريح</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+
+                <div class="theme-card" onclick="applyTheme('royal')" data-theme="royal">
+                    <div class="theme-preview royal-preview"></div>
+                    <div class="theme-info">
+                        <h5>ملكي</h5>
+                        <p>ذهبي وبنفسجي فاخر</p>
+                    </div>
+                    <div class="theme-check"><i class="ri-check-line"></i></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Enhanced Effects -->
+    <header class="holographic-hero">
+        <div class="container">
+            <div class="hero-particles"></div>
+            <span class="neon-badge"></span>
+            <h1>رحلة في عمق <br> <span class="gradient-text-anim">الخوارزميات التقليدية و الحديثة</span></h1>
+            <p>من عجلات قيصر الحجرية إلى مفاتيح RSA المستحيلة. موسوعة تفاعلية تشرح لك كيف نحمي أسرار العالم الرقمي.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">11</span>
+                    <span class="stat-label">متاحة الآن</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">تصنيفات</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">تفاعلي</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">غير متاحة</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- ================= Module 1: Caesar Cipher ================= -->
+        <section id="classic" class="lesson-module">
+            <div class="module-header">
+                <div class="module-number">01</div>
+                <div class="module-title">
+                    <span>THE SHIFT ERA</span>
+                    <h2>خوارزمية قيصر (Caesar Cipher)</h2>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="text-block">
+                    <p>يعتبر يوليوس قيصر أول من استخدم التشفير العسكري المنظم. الفكرة عبقرية في بساطتها: لا تستبدل الحرف
+                        برمز غريب، بل استبدله بحرف آخر يبعد عنه بمسافة ثابتة.</p>
+                    <div class="highlight-box">
+                        <strong>المفهوم الرياضي:</strong> التشفير هو عملية جمع، وفك التشفير هو عملية طرح، وكل ذلك يحدث
+                        داخل حلقة مغلقة (Modulo 26).
+                    </div>
+                    <div class="math-display">
+                        $$ C = (P + K) \pmod{26} $$
+                    </div>
+                    <p>حيث P هو ترتيب الحرف (0-25)، و K هو المفتاح (عدد الخطوات).</p>
+                
+                    <!-- Mini App: Caesar Live -->
+                    <div class="mini-app diagram-box"
+                        style="min-height: auto; align-items: stretch; text-align: right;">
+                        <h4 style="color:var(--neon-cyan); margin-bottom:10px;"><i class="ri-play-circle-line"></i> جرب
+                            بنفسك الآن:</h4>
+                        <input type="range" id="caesarRange" class="range-slider" min="0" max="25" value="3"
+                            oninput="updateCaesarDemo()">
+                        <div
+                            style="display:flex; justify-content:space-between; color:#64748b; font-size:0.8rem; margin-bottom:10px;">
+                            <span>إزاحة: 0</span>
+                            <span id="shiftVal" style="color:var(--neon-cyan)">3</span>
+                            <span>25</span>
+                        </div>
+                        <input type="text" id="caesarInput" class="mini-input" value="HELLO"
+                            oninput="updateCaesarDemo()">
+                        <div id="caesarResult" class="mini-result">KHOOR</div>
+
+                        <!-- Interactive Exercise Button -->
+                        <button class="exercise-btn" onclick="startCaesarExercise()" style="margin-top:15px;">
+                            <i class="ri-gamepad-line"></i> ابدأ التمرين التفاعلي
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual: The Wheel -->
+                <div class="diagram-box">
+                    <div class="cipher-disk" id="outerDisk">
+                        <!-- JS wil populate letters -->
+                        <div style="position:absolute; top:10px;">A</div>
+                    </div>
+                    <div class="disk-inner" id="innerDisk">
+                        <!-- JS wil populate letters -->
+                        <div style="position:absolute; top:10px; color:var(--neon-cyan)">A</div>
+                    </div>
+                    <div style="margin-top:20px; color:#64748b; font-size:0.9rem;">
+                        <i class="ri-arrow-up-line"></i> الحلقة الداخلية تمثل النص المشفر
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Module 1.5: Playfair Cipher ================= -->
+        <section class="lesson-module">
+            <div class="module-header">
+                <div class="module-number">02</div>
+                <div class="module-title">
+                    <span>THE DIGRAPH</span>
+                    <h2>شيفرة بلايفير (Playfair Cipher)</h2>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="text-block">
+                    <p>أول شيفرة تعتمد على استبدال "زوج" من الحروف بدلاً من حرف واحد (Digraph Substitution). استخدمتها
+                        بريطانيا في الحرب العالمية الأولى.</p>
+                    <div class="highlight-box">
+                        <strong>المفهوم:</strong> مصفوفة 5×5 تحتوي على كل الحروف (مع دمج I/J). شكل المستطيل الذي يصنعه
+                        الحرفان يحدد التشفير.
+                    </div>
+
+                    <!-- Mini App: Playfair Matrix Generator -->
+                    <div class="mini-app diagram-box"
+                        style="min-height: auto; align-items: stretch; text-align: right;">
+                        <h4 style="color:var(--neon-cyan); margin-bottom:10px;"><i class="ri-grid-fill"></i> مولد
+                            المصفوفة:</h4>
+                        <input type="text" id="playfairKey" class="mini-input" value="MONARCHY"
+                            placeholder="أدخل كلمة المفتاح..." oninput="updatePlayfairGrid()">
+                        <div id="playfairGrid" class="aes-grid-visual"
+                            style="grid-template-columns: repeat(5, 1fr); gap:2px; margin-top:10px;">
+                            <!-- JS Generates Grid Here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="diagram-box">
+                    <h3 style="color:white; margin-bottom:15px;">قواعد التشفير الأساسية</h3>
+                    <div style="display:flex; flex-direction:column; gap:10px; width:100%;">
+                        <div class="step-card" style="border-color:var(--neon-green)">
+                            <span class="step-title">1. نفس الصف (Row)</span>
+                            <span class="step-desc">استبدال الحروف بالحروف التي تليها يميناً.</span>
+                        </div>
+                        <div class="step-card" style="border-color:var(--neon-purple)">
+                            <span class="step-title">2. نفس العمود (Column)</span>
+                            <span class="step-desc">استبدال الحروف بالحروف التي تليها أسفل.</span>
+                        </div>
+                        <div class="step-card" style="border-color:var(--neon-cyan)">
+                            <span class="step-title">3. مستطيل (Rectangle)</span>
+                            <span class="step-desc">الزاوية المقابلة في نفس الصف.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Module 1.8: Simple Substitution (Atbash & ROT13) ================= -->
+        <section class="lesson-module">
+            <div class="module-header">
+                <div class="module-number">03</div>
+                <div class="module-title">
+                    <span>SPECIAL CASES</span>
+                    <h2>حالات خاصة (Atbash & ROT13)</h2>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <!-- Atbash Section -->
+                <div class="text-block">
+                    <h3 style="color:var(--neon-purple); margin-bottom:10px;">1. شيفرة أتباش (Atbash)</h3>
+                    <p>شيفرة عبرية قديمة (600 ق.م) تعتمد على "قلب" الأبجدية. الأول يصبح الأخير، والثاني يصبح قبل الأخير.
+                    </p>
+                    <div class="highlight-box">
+                        <strong>قاعدة ثابتة:</strong> A ↔ Z, B ↔ Y, C ↔ X
+                    </div>
+
+                    <div class="mini-app diagram-box" style="min-height:auto; text-align:right;">
+                        <label style="color:#94a3b8; font-size:0.8rem;">اكتب لتجربة العكس:</label>
+                        <input type="text" id="atbashInput" class="mini-input" placeholder="ABC..."
+                            oninput="updateAtbash()">
+                        <div id="atbashResult" class="mini-result">ZYX...</div>
+                    </div>
+                </div>
+
+                <!-- ROT13 Section -->
+                <div class="text-block">
+                    <h3 style="color:var(--neon-green); margin-bottom:10px;">2. شيفرة ROT13</h3>
+                    <p>حالة خاصة من شيفرة قيصر حيث المفتاح دائماً 13. بما أن الأبجدية 26 حرفاً، فإن تطبيقها مرتين يعيد
+                        النص لأصله.</p>
+                    <div class="math-display">ROT13(ROT13(x)) = x</div>
+
+                    <div class="mini-app diagram-box" style="min-height:auto; text-align:right;">
+                        <label style="color:#94a3b8; font-size:0.8rem;">اكتب لتجربة الإزاحة 13:</label>
+                        <input type="text" id="rot13Input" class="mini-input" placeholder="HELLO"
+                            oninput="updateRot13()">
+                        <div id="rot13Result" class="mini-result">URYYB</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Module 3.5: Monoalphabetic and 3DES ================= -->
+        <section class="lesson-module" id="added-algorithms">
+            <div class="module-header">
+                <div class="module-number">04</div>
+                <div class="module-title">
+                    <span>ADDED ALGORITHMS</span>
+                    <h2>خوارزميات إضافية وتصنيفها</h2>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="text-block">
+                    <h3 style="color:var(--neon-purple); margin-bottom:10px;">Monoalphabetic Cipher</h3>
+                    <p>خوارزمية كلاسيكية تستبدل كل حرف بحرف ثابت من أبجدية بديلة. المفتاح عبارة عن ترتيب مختلف للحروف الإنجليزية الـ26.</p>
+                    <div class="highlight-box">
+                        <strong>التصنيف:</strong> تشفير كلاسيكي متماثل، مناسب للتعلم وليس لحماية البيانات الحديثة.
+                    </div>
+                    <div class="math-display">C = f(P), حيث f أبجدية استبدال ثابتة</div>
+                    <div class="step-card active">
+                        <span class="step-title">كيف تعمل؟</span>
+                        <span class="step-desc">ننشئ جدولًا يربط A بحرف من المفتاح، ثم نطبق العلاقة نفسها على كل ظهور للحرف. تكرار الأنماط يجعلها قابلة للتحليل الإحصائي.</span>
+                    </div>
+                </div>
+
+                <div class="text-block">
+                    <h3 style="color:var(--neon-orange); margin-bottom:10px;">3DES</h3>
+                    <p>يطبق خوارزمية DES ثلاث مرات باستخدام مفتاح أطول. كان حلًا انتقاليًا قبل انتشار AES، لكنه أصبح قديمًا وبطيئًا.</p>
+                    <div class="highlight-box" style="border-color:var(--neon-orange);">
+                        <strong>التصنيف:</strong> تشفير متماثل قديم/انتقالي، يستخدم هنا لأغراض تعليمية فقط.
+                    </div>
+                    <div class="math-display">C = E(K₃, D(K₂, E(K₁, P)))</div>
+                    <div class="step-card">
+                        <span class="step-title">مراحل 3DES</span>
+                        <span class="step-desc">تشفير DES بالمفتاح الأول، ثم فك بالمفتاح الثاني، ثم تشفير بالمفتاح الثالث. يستخدم هنا للتعلم لأن AES أحدث وأسرع.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Module 3: AES (Modern) ================= -->
+        <section id="modern" class="lesson-module">
+            <div class="module-header">
+                <div class="module-number">05</div>
+                <div class="module-title">
+                    <span>THE STANDARD</span>
+                    <h2>معيار التشفير المتقدم (AES)</h2>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <!-- Content Side -->
+                <div class="text-block">
+                    <p>هنا نترك عالم الحروف وندخل عالم البايتات (Bytes). خوارزمية AES لا تعامل النص كجملة، بل ككتلة من
+                        البيانات (Block) بحجم 128-بت (أي 16 حرفاً).</p>
+                    <p>تتم العملية عبر "جولات" (Rounds) متكررة، كل جولة تقوم بخلط البيانات بطريقة تجعل التراجع عنها
+                        مستحيلاً بدون المفتاح.</p>
+
+                    <div class="step-card active">
+                        <span class="step-title">1. SubBytes (التعويض)</span>
+                        <span class="step-desc">استبدال كل بايت بآخر من جدول ثابت (S-Box) لتدمير أي نمط لغوي.</span>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-title">2. ShiftRows (الإزاحة)</span>
+                        <span class="step-desc">تدوير صفوف المصفوفة لخلط البيانات أفقياً.</span>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-title">3. MixColumns (الخبط)</span>
+                        <span class="step-desc">عملية ضرب مصفوفات معقدة لخلط البيانات عمودياً (أصعب خطوة
+                            رياضياً).</span>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-title">4. AddRoundKey (المفتاح)</span>
+                        <span class="step-desc">دمج مفتاح الجولة مع البيانات باستخدام XOR.</span>
+                    </div>
+                </div>
+
+                <!-- Visual Side: AES State Matrix -->
+                <div class="diagram-box">
+                    <h3 style="color:white; margin-bottom:20px;">The State Matrix (4x4)</h3>
+                    <div class="aes-grid-visual" id="aesGridBefore">
+                        <!-- 16 cells simplified -->
+                        <div class="aes-cell">32</div>
+                        <div class="aes-cell">88</div>
+                        <div class="aes-cell">31</div>
+                        <div class="aes-cell">e0</div>
+                        <div class="aes-cell">43</div>
+                        <div class="aes-cell">5a</div>
+                        <div class="aes-cell">31</div>
+                        <div class="aes-cell">37</div>
+                        <div class="aes-cell">f6</div>
+                        <div class="aes-cell">30</div>
+                        <div class="aes-cell">98</div>
+                        <div class="aes-cell">07</div>
+                        <div class="aes-cell">a8</div>
+                        <div class="aes-cell">8d</div>
+                        <div class="aes-cell">a2</div>
+                        <div class="aes-cell">34</div>
+                    </div>
+
+                    <div class="aes-arrow"><i class="ri-arrow-down-double-line"></i> <span
+                            style="font-size:1rem; color:var(--neon-green)">MixColumns()</span></div>
+
+                    <div class="aes-grid-visual" style="opacity:0.7">
+                        <div class="aes-cell" style="border-color:var(--neon-pink); color:var(--neon-pink)">XX</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                        <div class="aes-cell">..</div>
+                    </div>
+                    <p style="font-size:0.8rem; color:#64748b; margin-top:10px;">كل بايت يؤثر على الأربعة بايتات
+                        المجاورة، مما يخلق "أثر الانهيار الجليدي".</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Module 3: Key Generation (RSA) ================= -->
+        <section class="lesson-module">
+            <div class="module-header">
+                <div class="module-number">06</div>
+                <div class="module-title">
+                    <span>MODERN / ASYMMETRIC</span>
+                    <h2>كيف تولد المفاتيح؟ (RSA)</h2>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="full-width text-block" style="text-align:center; padding:0 100px;">
+                    <div class="highlight-box" style="border-color:var(--neon-green);">
+                        <strong>التصنيف:</strong> خوارزمية حديثة غير متماثلة؛ تستخدم مفتاحًا عامًا للتشفير ومفتاحًا خاصًا لفك التشفير.
+                    </div>
+                    <p>في التشفير الحديث (زي HTTPS اللي بتستخدمه دلوقتي)، لا نستخدم مفتاحاً واحداً، بل نستخدم قفلاً
+                        (مفتاح عام) ومفتاحاً لفتحه (مفتاح خاص). سحر الرياضيات يكمن في كيفية ارتباطهما.</p>
+                </div>
+
+                <div class="text-block">
+                    <h3 style="color:var(--neon-pink); margin-bottom:15px;">خطوات "صناعة" المفاتيح:</h3>
+                    <ol style="list-style:none; padding:0;">
+                        <li style="margin-bottom:15px; border-right:2px solid var(--neon-cyan); padding-right:15px;">
+                            <strong style="color:white; display:block;">1. اختر رقمين أوليين عمالقة (Primes)</strong>
+                            نسميهم $$ p $$ و $$ q $$. (مثلاً عدد يتكون من 300 خانة!).
+                        </li>
+                        <li style="margin-bottom:15px; border-right:2px solid var(--neon-purple); padding-right:15px;">
+                            <strong style="color:white; display:block;">2. احسب المعامل (Modulus)</strong>
+                            $$ n = p \times q $$ <br>
+                            هذا الرقم $$ n $$ هو القفل الذي يراه الجميع. من المستحيل تحليله لعرفه $$ p, q $$ إذا كان
+                            كبيراً.
+                        </li>
+                        <li style="margin-bottom:15px; border-right:2px solid var(--neon-green); padding-right:15px;">
+                            <strong style="color:white; display:block;">3. المفتاح الخاص (Private Key)</strong>
+                            رياضيات معقدة تعتمد على دالة (Euler Totient) لحساب الرقم السري $$ d $$.
+                        </li>
+                    </ol>
+                    <div class="step-card active">
+                        <span class="step-title">كيف تتم العملية؟</span>
+                        <span class="step-desc">ينشر المستقبل المفتاح العام، فيشفّر المرسل الرسالة به، ثم لا يستطيع فكها إلا المفتاح الخاص المقابل. في التطبيقات الحقيقية يستخدم RSA غالبًا لتبادل مفتاح AES صغير، لا لتشفير ملفات كبيرة.</span>
+                    </div>
+                </div>
+
+                <div class="diagram-box">
+                    <div class="key-gen-flow">
+                        <div class="key-node">
+                            <span>PRIME 1</span>
+                            p = 61
+                        </div>
+                        <div style="font-size:1.5rem; color:#64748b;">×</div>
+                        <div class="key-node">
+                            <span>PRIME 2</span>
+                            q = 53
+                        </div>
+                    </div>
+                    <div style="height:30px; border-left:2px dashed #334155; margin:10px 0;"></div>
+                    <div class="key-node" style="border-color:var(--neon-cyan); width:200px;">
+                        <span>PUBLIC MODULUS (N)</span>
+                        n = 3233
+                    </div>
+                    <div style="margin-top:20px; text-align:center; font-size:0.8rem; color:#94a3b8;">
+                        أي شخص يمكنه رؤية (3233)، لكن الآلة الحاسبة ستستغرق سنوات لتحليله إلى (61 × 53) إذا كانت الأرقام
+                        كبيرة جداً.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Module 5: DES (Data Encryption Standard) ================= -->
+        <section class="lesson-module">
+            <div class="module-header">
+                <div class="module-number">07</div>
+                <div class="module-title">
+                    <span>THE LEGACY STANDARD</span>
+                    <h2>معيار تشفير البيانات (DES)</h2>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="text-block">
+                    <p>DES هو أول معيار تشفير حكومي أمريكي (1977-2001). رغم أنه أصبح قديماً، إلا أنه أساس فهم التشفير
+                        الحديث.</p>
+
+                    <div class="highlight-box">
+                        <strong>المواصفات الأساسية:</strong>
+                        <ul style="margin-top:10px; padding-right:20px;">
+                            <li>حجم الكتلة: 64 بت (8 بايت)</li>
+                            <li>حجم المفتاح: 56 بت فعلي (64 بت مع parity)</li>
+                            <li>عدد الجولات: 16 جولة</li>
+                            <li>نوع الشبكة: Feistel Network</li>
+                        </ul>
+                    </div>
+
+                    <h3 style="color:var(--neon-purple); margin:20px 0 10px;">خطوات التشفير:</h3>
+                    <div class="step-card active">
+                        <span class="step-title">1. Initial Permutation (IP)</span>
+                        <span class="step-desc">إعادة ترتيب أولية للبتات حسب جدول ثابت</span>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-title">2. 16 Rounds (Feistel)</span>
+                        <span class="step-desc">كل جولة تستخدم مفتاح فرعي مختلف مع دالة F معقدة</span>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-title">3. Final Permutation (FP)</span>
+                        <span class="step-desc">إعادة ترتيب نهائية (عكس IP)</span>
+                    </div>
+
+                    <!-- Mini App: DES Demo -->
+                    <div class="mini-app diagram-box" style="min-height: auto; text-align: right; margin-top:20px;">
+                        <h4 style="color:var(--neon-cyan); margin-bottom:10px;">
+                            <i class="ri-lock-password-line"></i> تجربة DES مبسطة:
+                        </h4>
+                        <input type="text" id="desInput" class="mini-input" placeholder="أدخل 8 أحرف" maxlength="8"
+                            oninput="updateDESDemo()">
+                        <input type="text" id="desKey" class="mini-input" placeholder="مفتاح (8 أحرف)" maxlength="8"
+                            oninput="updateDESDemo()">
+                        <div id="desResult" class="mini-result">النتيجة ستظهر هنا...</div>
+                        <small style="color:#64748b; display:block; margin-top:10px;">
+                            ملاحظة: هذا عرض توضيحي مبسط - DES الحقيقي أكثر تعقيداً
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Visual: Feistel Network -->
+                <div class="diagram-box">
+                    <h3 style="color:white; margin-bottom:20px;">شبكة Feistel</h3>
+                    <div class="feistel-diagram" id="feistelDiagram">
+                        <div class="feistel-block">
+                            <div class="feistel-half left-half">
+                                <span>L₀</span>
+                                <small>النصف الأيسر</small>
+                            </div>
+                            <div class="feistel-half right-half">
+                                <span>R₀</span>
+                                <small>النصف الأيمن</small>
+                            </div>
+                        </div>
+
+                        <div class="feistel-arrow">
+                            <i class="ri-arrow-down-line"></i>
+                            <span class="round-label">Round 1</span>
+                        </div>
+
+                        <div class="feistel-function">
+                            <div class="f-box">
+                                <i class="ri-function-line"></i>
+                                <span>F(R₀, K₁)</span>
+                            </div>
+                            <div class="xor-symbol">⊕</div>
+                        </div>
+
+                        <div class="feistel-arrow">
+                            <i class="ri-arrow-down-line"></i>
+                        </div>
+
+                        <div class="feistel-block">
+                            <div class="feistel-half left-half">
+                                <span>L₁ = R₀</span>
+                            </div>
+                            <div class="feistel-half right-half">
+                                <span>R₁ = L₀ ⊕ F</span>
+                            </div>
+                        </div>
+
+                        <div class="feistel-note">
+                            <i class="ri-information-line"></i>
+                            <p>يتكرر هذا النمط 16 مرة مع مفاتيح مختلفة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Module 6: Block Cipher Modes (CBC, CFB, OFB, CTR) ================= -->
+        <section class="lesson-module">
+            <div class="module-header">
+                <div class="module-number">08</div>
+                <div class="module-title">
+                    <span>OPERATION MODES</span>
+                    <h2>أنماط تشغيل التشفير الكتلي</h2>
+                </div>
+            </div>
+
+            <div class="content-grid full-width">
+                <div class="text-block">
+                    <p>عندما نريد تشفير بيانات أكبر من كتلة واحدة، نحتاج لطريقة لربط الكتل معاً. هنا تأتي أنماط التشغيل!
+                    </p>
+
+                    <div class="highlight-box">
+                        <strong>لماذا نحتاج أنماط التشغيل؟</strong>
+                        <p style="margin-top:8px;">تشفير كل كتلة بشكل مستقل (ECB) يكشف الأنماط المتكررة. الأنماط الأخرى
+                            تحل هذه المشكلة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CBC Mode -->
+            <div class="content-grid">
+                <div class="text-block">
+                    <h3 style="color:var(--neon-cyan); margin-bottom:15px;">
+                        <i class="ri-links-line"></i> 1. CBC (Cipher Block Chaining)
+                    </h3>
+                    <p>كل كتلة يتم XOR-ها مع الكتلة المشفرة السابقة قبل التشفير. الكتلة الأولى تستخدم IV (Initialization
+                        Vector).</p>
+
+                    <div class="math-display">
+                        C₁ = E(P₁ ⊕ IV) <br>
+                        Cᵢ = E(Pᵢ ⊕ Cᵢ₋₁)
+                    </div>
+
+                    <div class="highlight-box" style="border-color:var(--neon-cyan);">
+                        <strong>المميزات:</strong>
+                        <ul style="margin-top:8px; padding-right:20px;">
+                            <li>✓ يخفي الأنماط المتكررة</li>
+                            <li>✓ آمن للبيانات الكبيرة</li>
+                            <li>✓ الأكثر استخداماً</li>
+                        </ul>
+                        <strong style="display:block; margin-top:10px;">العيوب:</strong>
+                        <ul style="margin-top:8px; padding-right:20px;">
+                            <li>✗ لا يمكن التوازي في التشفير</li>
+                            <li>✗ خطأ في كتلة يؤثر على التالية</li>
+                        </ul>
+                    </div>
+
+                    <!-- Interactive CBC Demo -->
+                    <div class="mini-app diagram-box" style="min-height: auto; margin-top:20px;">
+                        <h4 style="color:var(--neon-cyan); margin-bottom:10px;">
+                            <i class="ri-play-line"></i> تجربة CBC:
+                        </h4>
+                        <button class="exercise-btn" onclick="animateCBC(this)" style="width:100%;">
+                            <i class="ri-play-circle-line"></i> شاهد كيف يعمل CBC
+                        </button>
+                        <div id="cbcAnimation" class="mode-animation" style="display:none; margin-top:15px;">
+                            <div class="animation-step">
+                                <div class="block-visual">P₁</div>
+                                <span class="operation">⊕</span>
+                                <div class="block-visual iv">IV</div>
+                                <span class="operation">→</span>
+                                <div class="block-visual encrypt">E</div>
+                                <span class="operation">→</span>
+                                <div class="block-visual result">C₁</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CBC Visual Diagram -->
+                <div class="diagram-box">
+                    <h3 style="color:white; margin-bottom:20px;">مخطط CBC</h3>
+                    <div class="mode-diagram cbc-diagram">
+                        <div class="mode-row">
+                            <div class="mode-block plaintext">
+                                <span class="block-label">P₁</span>
+                                <small>كتلة نص</small>
+                            </div>
+                            <div class="mode-op xor-op">⊕</div>
+                            <div class="mode-block iv-block">
+                                <span class="block-label">IV</span>
+                                <small>متجه أولي</small>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-block cipher-block">
+                                <i class="ri-lock-line"></i>
+                                <span class="block-label">Encrypt</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-block ciphertext">
+                                <span class="block-label">C₁</span>
+                                <small>نص مشفر</small>
+                            </div>
+                        </div>
+                        <div class="mode-feedback">
+                            <i class="ri-arrow-go-back-line"></i>
+                            <span>يُستخدم في الكتلة التالية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CFB Mode -->
+            <div class="content-grid">
+                <div class="text-block">
+                    <h3 style="color:var(--neon-purple); margin-bottom:15px;">
+                        <i class="ri-git-branch-line"></i> 2. CFB (Cipher Feedback)
+                    </h3>
+                    <p>يحول التشفير الكتلي إلى تشفير تدفقي! نشفر الكتلة السابقة ثم نعمل XOR مع النص الواضح.</p>
+
+                    <div class="math-display">
+                        C₁ = P₁ ⊕ E(IV) <br>
+                        Cᵢ = Pᵢ ⊕ E(Cᵢ₋₁)
+                    </div>
+
+                    <div class="highlight-box" style="border-color:var(--neon-purple);">
+                        <strong>المميزات:</strong>
+                        <ul style="margin-top:8px; padding-right:20px;">
+                            <li>✓ لا يحتاج padding</li>
+                            <li>✓ يعمل كتشفير تدفقي</li>
+                            <li>✓ مناسب للبيانات المتدفقة</li>
+                        </ul>
+                        <strong style="display:block; margin-top:10px;">العيوب:</strong>
+                        <ul style="margin-top:8px; padding-right:20px;">
+                            <li>✗ أبطأ من CBC</li>
+                            <li>✗ خطأ في بت يؤثر على كتلتين</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="diagram-box">
+                    <h3 style="color:white; margin-bottom:20px;">مخطط CFB</h3>
+                    <div class="mode-diagram cfb-diagram">
+                        <div class="mode-row">
+                            <div class="mode-block iv-block">
+                                <span class="block-label">IV / C₀</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-block cipher-block">
+                                <i class="ri-lock-line"></i>
+                                <span class="block-label">Encrypt</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-op xor-op">⊕</div>
+                            <div class="mode-block plaintext">
+                                <span class="block-label">P₁</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-block ciphertext">
+                                <span class="block-label">C₁</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFB Mode -->
+            <div class="content-grid">
+                <div class="text-block">
+                    <h3 style="color:var(--neon-green); margin-bottom:15px;">
+                        <i class="ri-refresh-line"></i> 3. OFB (Output Feedback)
+                    </h3>
+                    <p>مشابه لـ CFB لكن نستخدم مخرجات التشفير (وليس النص المشفر) في التغذية الراجعة. هذا يمنع انتشار
+                        الأخطاء!</p>
+
+                    <div class="math-display">
+                        O₁ = E(IV) <br>
+                        Oᵢ = E(Oᵢ₋₁) <br>
+                        Cᵢ = Pᵢ ⊕ Oᵢ
+                    </div>
+
+                    <div class="highlight-box" style="border-color:var(--neon-green);">
+                        <strong>المميزات:</strong>
+                        <ul style="margin-top:8px; padding-right:20px;">
+                            <li>✓ خطأ في بت لا ينتشر</li>
+                            <li>✓ يمكن توليد keystream مسبقاً</li>
+                            <li>✓ مناسب للقنوات الصاخبة</li>
+                        </ul>
+                        <strong style="display:block; margin-top:10px;">العيوب:</strong>
+                        <ul style="margin-top:8px; padding-right:20px;">
+                            <li>✗ يجب عدم إعادة استخدام IV</li>
+                            <li>✗ حساس لهجمات bit-flipping</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="diagram-box">
+                    <h3 style="color:white; margin-bottom:20px;">مخطط OFB</h3>
+                    <div class="mode-diagram ofb-diagram">
+                        <div class="mode-row">
+                            <div class="mode-block iv-block">
+                                <span class="block-label">IV / O₀</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-block cipher-block">
+                                <i class="ri-lock-line"></i>
+                                <span class="block-label">Encrypt</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow split-arrow">
+                            <span>↓</span>
+                            <span class="feedback-arrow">↻</span>
+                        </div>
+                        <div class="mode-row">
+                            <div class="mode-block output-block">
+                                <span class="block-label">O₁</span>
+                            </div>
+                            <div class="mode-op xor-op">⊕</div>
+                            <div class="mode-block plaintext">
+                                <span class="block-label">P₁</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-block ciphertext">
+                                <span class="block-label">C₁</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTR Mode -->
+            <div class="content-grid">
+                <div class="text-block">
+                    <h3 style="color:var(--neon-orange); margin-bottom:15px;">
+                        <i class="ri-calculator-line"></i> 4. CTR (Counter Mode)
+                    </h3>
+                    <p>الأحدث والأسرع! نشفر عداد متزايد ثم نعمل XOR مع النص. يمكن التوازي الكامل!</p>
+
+                    <div class="math-display">
+                        Cᵢ = Pᵢ ⊕ E(Nonce + Counter)
+                    </div>
+
+                    <div class="highlight-box" style="border-color:var(--neon-orange);">
+                        <strong>المميزات:</strong>
+                        <ul style="margin-top:8px; padding-right:20px;">
+                            <li>✓ توازي كامل (سريع جداً!)</li>
+                            <li>✓ وصول عشوائي للكتل</li>
+                            <li>✓ لا يحتاج padding</li>
+                            <li>✓ الأكثر استخداماً حالياً</li>
+                        </ul>
+                        <strong style="display:block; margin-top:10px;">العيوب:</strong>
+                        <ul style="margin-top:8px; padding-right:20px;">
+                            <li>✗ يجب عدم إعادة استخدام Nonce</li>
+                            <li>✗ حساس لهجمات bit-flipping</li>
+                        </ul>
+                    </div>
+
+                    <!-- Interactive CTR Demo -->
+                    <div class="mini-app diagram-box" style="min-height: auto; margin-top:20px;">
+                        <h4 style="color:var(--neon-orange); margin-bottom:10px;">
+                            <i class="ri-play-line"></i> محاكاة CTR:
+                        </h4>
+                        <div class="ctr-simulator">
+                            <div class="ctr-counter">
+                                <span>Counter: </span>
+                                <span id="ctrValue" class="counter-value">0</span>
+                                <button onclick="incrementCTR()" class="mini-btn">
+                                    <i class="ri-add-line"></i>
+                                </button>
+                            </div>
+                            <div class="ctr-process">
+                                <div class="process-step">Nonce + Counter</div>
+                                <div class="process-arrow">→</div>
+                                <div class="process-step">Encrypt</div>
+                                <div class="process-arrow">→</div>
+                                <div class="process-step">⊕ Plaintext</div>
+                                <div class="process-arrow">→</div>
+                                <div class="process-step result">Ciphertext</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="diagram-box">
+                    <h3 style="color:white; margin-bottom:20px;">مخطط CTR</h3>
+                    <div class="mode-diagram ctr-diagram">
+                        <div class="mode-row">
+                            <div class="mode-block nonce-block">
+                                <span class="block-label">Nonce</span>
+                            </div>
+                            <div class="mode-op">+</div>
+                            <div class="mode-block counter-block">
+                                <span class="block-label">Counter (i)</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-block cipher-block">
+                                <i class="ri-lock-line"></i>
+                                <span class="block-label">Encrypt</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-op xor-op">⊕</div>
+                            <div class="mode-block plaintext">
+                                <span class="block-label">Pᵢ</span>
+                            </div>
+                        </div>
+                        <div class="mode-arrow">↓</div>
+                        <div class="mode-row">
+                            <div class="mode-block ciphertext">
+                                <span class="block-label">Cᵢ</span>
+                            </div>
+                        </div>
+                        <div class="parallel-note">
+                            <i class="ri-flashlight-line"></i>
+                            <span>يمكن معالجة جميع الكتل بالتوازي!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="content-grid full-width">
+                <div class="diagram-box" style="padding:30px;">
+                    <h3 style="color:var(--neon-cyan); margin-bottom:25px; text-align:center;">
+                        <i class="ri-table-line"></i> مقارنة شاملة بين الأنماط
+                    </h3>
+                    <div class="comparison-table">
+                        <table class="modes-table">
+                            <thead>
+                                <tr>
+                                    <th>الميزة</th>
+                                    <th>CBC</th>
+                                    <th>CFB</th>
+                                    <th>OFB</th>
+                                    <th>CTR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>التوازي (تشفير)</strong></td>
+                                    <td><span class="no">✗</span></td>
+                                    <td><span class="no">✗</span></td>
+                                    <td><span class="no">✗</span></td>
+                                    <td><span class="yes">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>التوازي (فك تشفير)</strong></td>
+                                    <td><span class="yes">✓</span></td>
+                                    <td><span class="yes">✓</span></td>
+                                    <td><span class="no">✗</span></td>
+                                    <td><span class="yes">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>يحتاج Padding</strong></td>
+                                    <td><span class="yes">نعم</span></td>
+                                    <td><span class="no">لا</span></td>
+                                    <td><span class="no">لا</span></td>
+                                    <td><span class="no">لا</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>انتشار الأخطاء</strong></td>
+                                    <td>كتلتين</td>
+                                    <td>كتلتين</td>
+                                    <td>بت واحد</td>
+                                    <td>بت واحد</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>السرعة</strong></td>
+                                    <td>متوسط</td>
+                                    <td>بطيء</td>
+                                    <td>متوسط</td>
+                                    <td>سريع جداً</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>الاستخدام الشائع</strong></td>
+                                    <td>TLS, IPsec</td>
+                                    <td>نادر</td>
+                                    <td>نادر</td>
+                                    <td>TLS 1.3, IPsec</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="recommendation-box">
+                        <i class="ri-star-line"></i>
+                        <div>
+                            <strong>التوصية:</strong>
+                            <p>استخدم <span style="color:var(--neon-orange)">CTR</span> للأداء العالي، أو <span
+                                    style="color:var(--neon-cyan)">CBC</span> للتوافق الواسع. تجنب CFB و OFB إلا للحالات
+                                الخاصة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Interactive Learning Hub ================= -->
+        <section class="lesson-module interactive-learning-hub">
+            <div class="module-header">
+                <div class="module-number">🎮</div>
+                <div class="module-title">
+                    <span>INTERACTIVE LEARNING</span>
+                    <h2>التمارين التفاعلية والألعاب التعليمية</h2>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="text-block">
+                    <p>اختبر معرفتك وطبق ما تعلمته من خلال تمارين تفاعلية مصممة خصيصاً لتعزيز فهمك للخوارزميات.</p>
+
+                    <!-- Progress Tracker -->
+                    <div class="progress-tracker">
+                        <h4 style="color:var(--neon-cyan); margin-bottom:15px;">
+                            <i class="ri-trophy-line"></i> تقدمك التعليمي
+                        </h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-stats">
+                            <span id="progressText">0 من 4 خوارزميات مكتملة</span>
+                            <span id="pointsText">0 نقطة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="diagram-box">
+                    <!-- Exercise Selection -->
+                    <div class="exercise-selector">
+                        <h4 style="color:var(--neon-green); margin-bottom:15px;">
+                            <i class="ri-gamepad-line"></i> اختر التمرين
+                        </h4>
+                        <div class="exercise-buttons">
+                            <button class="exercise-card" onclick="startExercise('caesar')">
+                                <i class="ri-refresh-line"></i>
+                                <span>تمرين قيصر</span>
+                                <small>اختبر مهاراتك في الإزاحة</small>
+                            </button>
+                            <button class="exercise-card" onclick="startExercise('atbash')">
+                                <i class="ri-arrow-left-right-line"></i>
+                                <span>تمرين أتباش</span>
+                                <small>لعبة العكس السريع</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Locked Algorithms ================= -->
+        <section class="lesson-module locked-algorithms" id="upcoming-algorithms">
+            <div class="module-header">
+                <div class="module-number">04</div>
+                <div class="module-title">
+                    <span>COMING NEXT</span>
+                    <h2>خوارزميات قادمة</h2>
+                </div>
+            </div>
+            <div class="locked-intro">
+                <p>أربع خوارزميات جديدة ستُفتح لاحقًا مع شرح تفاعلي ومختبر خاص لكل واحدة منها.</p>
+                <span class="locked-count"><i class="ri-lock-2-line"></i> 4 خوارزميات مقفلة</span>
+            </div>
+            <div class="locked-algorithm-grid">
+                <article class="locked-algorithm-card">
+                    <div class="locked-card-icon"><i class="ri-hashtag"></i></div>
+                    <div class="locked-card-content"><span class="locked-card-number">01</span><h3>SHA-256</h3><p>دالة تجزئة حديثة تنتج بصمة ثابتة للبيانات، وليست تشفيرًا قابلًا لفك التشفير.</p><span class="algorithm-class">Hashing</span></div>
+                    <i class="ri-lock-line locked-mark"></i>
+                </article>
+                <article class="locked-algorithm-card">
+                    <div class="locked-card-icon"><i class="ri-share-line"></i></div>
+                    <div class="locked-card-content"><span class="locked-card-number">02</span><h3>Diffie-Hellman</h3><p>بروتوكول لتبادل مفتاح سري عبر قناة يمكن للآخرين مراقبتها.</p><span class="algorithm-class">Key Exchange</span></div>
+                    <i class="ri-lock-line locked-mark"></i>
+                </article>
+                <article class="locked-algorithm-card">
+                    <div class="locked-card-icon"><i class="ri-key-2-line"></i></div>
+                    <div class="locked-card-content"><span class="locked-card-number">03</span><h3>ElGamal</h3><p>تشفير غير متماثل يعتمد على صعوبة اللوغاريتم المتقطع.</p><span class="algorithm-class">Asymmetric</span></div>
+                    <i class="ri-lock-line locked-mark"></i>
+                </article>
+                <article class="locked-algorithm-card">
+                    <div class="locked-card-icon"><i class="ri-node-tree"></i></div>
+                    <div class="locked-card-content"><span class="locked-card-number">04</span><h3>ECC</h3><p>تشفير بالمنحنيات البيضاوية يوفر أمانًا قويًا بمفاتيح أصغر.</p><span class="algorithm-class">Modern / Asymmetric</span></div>
+                    <i class="ri-lock-line locked-mark"></i>
+                </article>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Exercise Modal -->
+    <div id="exerciseModal" class="exercise-modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="exerciseTitle">تمرين تفاعلي</h3>
+                <button class="close-btn" onclick="closeExercise()">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="exerciseContent"></div>
+                <div class="exercise-feedback" id="exerciseFeedback" style="display:none;"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn decrypt" onclick="checkAnswer()">
+                    <i class="ri-check-line"></i> تحقق من الإجابة
+                </button>
+                <button class="action-btn encrypt" onclick="getHint()" style="background:var(--neon-orange);">
+                    <i class="ri-lightbulb-line"></i> تلميح
+                </button>
+            </div>
+        </div>
+    </div>
+
+        <!-- Footer -->
+        <footer class="tech-footer">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <i class="ri-shield-keyhole-line"></i> Alkhalil<span>Fa</span>
+                    </div>
+                    <p>منصة AlkhalilFa التعليمية للتشفير وأمن المعلومات.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 id="quick-links">روابط سريعة</h4>
+                    <a href="#classic">الخوارزميات الكلاسيكية</a>
+                    <a href="#modern">الخوارزميات الحديثة</a>
+                    <a href="#upcoming-algorithms">الخوارزميات القادمة</a>
+                    <a href="/tool">المختبر العملي</a>
+                </div>
+                <div class="footer-links">
+                    <h4>منصة AlkhalilFa</h4>
+                    <a href="/about">من نحن</a>
+                    <a href="mailto:anasaledrisi2025@gmail.com">أنس الإدريسي</a>
+                    <a href="mailto:khaleelalkhouly@gmail.com">Khalil Adel Alkhouli</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AlkhalilFa. جميع الحقوق محفوظة.</p>
+            </div>
+        </footer>
+
+        <script>
+            // === Enhanced Interactive Effects ===
+
+            // Add mouse tracking for 3D effects
+            // Add mouse tracking for 3D effects
+            const cards = document.querySelectorAll('.lesson-module');
+
+            if (!document.body.classList.contains('performance-lite')) {
+                document.addEventListener('mousemove', (e) => {
+                    const mouseX = e.clientX / window.innerWidth;
+                    const mouseY = e.clientY / window.innerHeight;
+
+                    cards.forEach(card => {
+                        const rect = card.getBoundingClientRect();
+                        const cardX = (rect.left + rect.width / 2) / window.innerWidth;
+                        const cardY = (rect.top + rect.height / 2) / window.innerHeight;
+                        const deltaX = (mouseX - cardX) * 3;
+                        const deltaY = (mouseY - cardY) * 3;
+
+                        card.style.transform = `perspective(1000px) rotateY(${deltaX}deg) rotateX(${-deltaY}deg)`;
+                    });
+                });
+            }
+
+            // === Caesar Wheel Setup ===
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const diskOuter = document.getElementById('outerDisk');
+            const diskInner = document.getElementById('innerDisk');
+
+            function createWheel() {
+                for (let i = 0; i < 26; i++) {
+                    const angle = (i * (360 / 26)) - 90; // -90 to start at top
+
+                    // Outer Letter
+                    const l1 = document.createElement('div');
+                    l1.className = 'char-point';
+                    l1.innerText = alphabet[i];
+                    // Move out from center
+                    const radius = 145; // Adjusted for 350px
+                    l1.style.transform = `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`;
+                    diskOuter.appendChild(l1);
+
+                    // Inner Letter
+                    const l2 = document.createElement('div');
+                    l2.className = 'char-point';
+                    l2.innerText = alphabet[i];
+                    const radiusInner = 95; // Adjusted for 240px
+                    l2.style.transform = `rotate(${angle}deg) translate(${radiusInner}px) rotate(${-angle}deg)`;
+                    diskInner.appendChild(l2);
+                }
+            }
+
+            function updateCaesarDemo() {
+                const shift = parseInt(document.getElementById('caesarRange').value);
+                const input = document.getElementById('caesarInput').value.toUpperCase();
+
+                // Update Visual Wheel Rotation
+                const angle = shift * (360 / 26);
+                diskInner.style.transform = `rotate(${angle}deg)`;
+                document.getElementById('shiftVal').innerText = shift;
+
+                // Calculate Text Result
+                let res = "";
+                for (let char of input) {
+                    if (alphabet.includes(char)) {
+                        let oldIdx = alphabet.indexOf(char);
+                        let newIdx = (oldIdx + shift) % 26;
+                        res += alphabet[newIdx];
+                    } else {
+                        res += char;
+                    }
+                }
+                document.getElementById('caesarResult').innerText = res;
+            }
+
+            // === Playfair Matrix Logic ===
+            function updatePlayfairGrid() {
+                let key = document.getElementById('playfairKey').value.toUpperCase().replace(/[^A-Z]/g, "").replace(/J/g, "I");
+                const alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ"; // No J
+                let matrix = [];
+                let used = new Set();
+
+                // Add Key
+                for (let char of key) {
+                    if (!used.has(char)) {
+                        matrix.push(char);
+                        used.add(char);
+                    }
+                }
+
+                // Add rest
+                for (let char of alphabet) {
+                    if (!used.has(char)) {
+                        matrix.push(char);
+                        used.add(char);
+                    }
+                }
+
+                // Render
+                const grid = document.getElementById('playfairGrid');
+                grid.innerHTML = "";
+                for (let char of matrix) {
+                    let cell = document.createElement('div');
+                    cell.className = 'aes-cell'; // reuse style
+                    cell.innerText = char;
+                    if (key.includes(char) && key.length > 0) {
+                        cell.style.color = "var(--neon-green)";
+                        cell.style.borderColor = "var(--neon-green)";
+                    }
+                    grid.appendChild(cell);
+                }
+            }
+
+            // Initialize
+            createWheel();
+            updateCaesarDemo();
+            updatePlayfairGrid();
+            // === Atbash & ROT13 Logic ===
+            function updateAtbash() {
+                const input = document.getElementById('atbashInput').value;
+                const lookup = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+                const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                let res = "";
+                for (let char of input) {
+                    const upperChar = char.toUpperCase();
+                    const idx = alphabet.indexOf(upperChar);
+                    const converted = idx !== -1 ? lookup[idx] : char;
+                    res += char === upperChar ? converted : converted.toLowerCase();
+                }
+                document.getElementById('atbashResult').innerText = res || "ZYX...";
+            }
+
+            function updateRot13() {
+                const input = document.getElementById('rot13Input').value;
+                const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                let res = "";
+                for (let char of input) {
+                    const upperChar = char.toUpperCase();
+                    let idx = alphabet.indexOf(upperChar);
+                    if (idx !== -1) {
+                        const converted = alphabet[(idx + 13) % 26];
+                        res += char === upperChar ? converted : converted.toLowerCase();
+                    } else {
+                        res += char;
+                    }
+                }
+                document.getElementById('rot13Result').innerText = res || "URYYB";
+            }
+
+            // ============================================
+            // Interactive Learning System
+            // ============================================
+
+            // Progress Tracking
+            let userProgress = JSON.parse(localStorage.getItem('cryptoProgress')) || {
+                completedAlgos: [],
+                points: 0,
+                exercises: {}
+            };
+
+            function updateProgress() {
+                const total = 4;
+                const completed = userProgress.completedAlgos.length;
+                const percentage = (completed / total) * 100;
+
+                if (document.getElementById('progressFill')) {
+                    document.getElementById('progressFill').style.width = percentage + '%';
+                    document.getElementById('progressText').innerText = `${completed} من ${total} خوارزميات مكتملة`;
+                    document.getElementById('pointsText').innerText = `${userProgress.points} نقطة`;
+                }
+
+                localStorage.setItem('cryptoProgress', JSON.stringify(userProgress));
+            }
+
+            // Exercise Data
+            const exercises = {
+                caesar: [
+                    { question: "فك تشفير: KHOOR (المفتاح: 3)", answer: "HELLO", hint: "استخدم الإزاحة العكسية -3" },
+                    { question: "شفّر: WORLD (المفتاح: 5)", answer: "BTWQI", hint: "أزح كل حرف 5 خطوات للأمام" },
+                    { question: "فك تشفير: MJQQT (المفتاح: 5)", answer: "HELLO", hint: "أزح كل حرف 5 خطوات للخلف" }
+                ],
+                playfair: [
+                    { question: "باستخدام المفتاح MONARCHY، شفّر: HI", answer: "BMODZBXDNABEKUDMUIXMMOUVIF", hint: "استخدم قواعد المصفوفة 5×5" }
+                ],
+                atbash: [
+                    { question: "فك تشفير باستخدام Atbash: SVOOL", answer: "HELLO", hint: "A↔Z, B↔Y, C↔X..." },
+                    { question: "شفّر باستخدام Atbash: WORLD", answer: "DLIOW", hint: "اعكس الأبجدية" }
+                ]
+            };
+
+            let currentExercise = null;
+            let currentAnswer = "";
+            let hintsUsed = 0;
+
+            function startCaesarExercise() {
+                startExercise('caesar');
+            }
+
+            function startExercise(type) {
+                const modal = document.getElementById('exerciseModal');
+                const content = document.getElementById('exerciseContent');
+                const title = document.getElementById('exerciseTitle');
+                const feedback = document.getElementById('exerciseFeedback');
+
+                feedback.style.display = 'none';
+                hintsUsed = 0;
+
+                // Select random exercise
+                const exerciseList = exercises[type] || exercises.caesar;
+                currentExercise = exerciseList[Math.floor(Math.random() * exerciseList.length)];
+                currentAnswer = currentExercise.answer;
+
+                // Set title
+                const titles = {
+                    caesar: 'تمرين شيفرة قيصر',
+                    playfair: 'تمرين شيفرة بلايفير',
+                    atbash: 'تمرين شيفرة أتباش',
+                    mixed: 'التحدي المختلط'
+                };
+                title.innerText = titles[type] || 'تمرين تفاعلي';
+
+                // Build exercise UI
+                content.innerHTML = `
+                <div class="exercise-question">
+                    <h4 style="color:var(--neon-cyan); margin-bottom:20px;">
+                        <i class="ri-question-line"></i> السؤال:
+                    </h4>
+                    <p style="font-size:1.2rem; color:white; margin-bottom:30px;">
+                        ${currentExercise.question}
+                    </p>
+                    <label style="color:var(--neon-green); margin-bottom:10px;">إجابتك:</label>
+                    <input type="text" id="exerciseAnswer" class="mini-input" 
+                           placeholder="اكتب إجابتك هنا..." 
+                           style="font-size:1.1rem; text-align:center; text-transform:uppercase;">
+                </div>
+            `;
+
+                modal.style.display = 'flex';
+
+                // Focus on input
+                setTimeout(() => {
+                    document.getElementById('exerciseAnswer').focus();
+                }, 300);
+            }
+
+            function closeExercise() {
+                document.getElementById('exerciseModal').style.display = 'none';
+            }
+
+            function checkAnswer() {
+                const userAnswer = document.getElementById('exerciseAnswer').value.toUpperCase().trim();
+                const feedback = document.getElementById('exerciseFeedback');
+
+                if (!userAnswer) {
+                    feedback.innerHTML = `
+                    <div class="feedback-error">
+                        <i class="ri-error-warning-line"></i>
+                        <span>الرجاء إدخال إجابة!</span>
+                    </div>
+                `;
+                    feedback.style.display = 'block';
+                    return;
+                }
+
+                if (userAnswer === currentAnswer) {
+                    // Correct answer!
+                    const points = Math.max(10 - (hintsUsed * 3), 5);
+                    userProgress.points += points;
+
+                    feedback.innerHTML = `
+                    <div class="feedback-success">
+                        <i class="ri-checkbox-circle-line"></i>
+                        <h3>إجابة صحيحة! 🎉</h3>
+                        <p>لقد حصلت على ${points} نقطة</p>
+                        <div class="celebration-effect"></div>
+                    </div>
+                `;
+                    feedback.style.display = 'block';
+
+                    updateProgress();
+
+                    // Celebration animation
+                    createConfetti();
+
+                    setTimeout(() => {
+                        closeExercise();
+                    }, 3000);
+
+                } else {
+                    // Wrong answer
+                    feedback.innerHTML = `
+                    <div class="feedback-error">
+                        <i class="ri-close-circle-line"></i>
+                        <h4>إجابة خاطئة</h4>
+                        <p>حاول مرة أخرى! يمكنك طلب تلميح إذا احتجت.</p>
+                    </div>
+                `;
+                    feedback.style.display = 'block';
+                }
+            }
+
+            function getHint() {
+                const feedback = document.getElementById('exerciseFeedback');
+                hintsUsed++;
+
+                feedback.innerHTML = `
+                <div class="feedback-hint">
+                    <i class="ri-lightbulb-flash-line"></i>
+                    <h4>تلميح:</h4>
+                    <p>${currentExercise.hint}</p>
+                </div>
+            `;
+                feedback.style.display = 'block';
+            }
+
+            function createConfetti() {
+                const colors = ['#00f3ff', '#bc13fe', '#10b981', '#ec4899', '#f97316'];
+                const confettiCount = 50;
+
+                for (let i = 0; i < confettiCount; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 3000);
+                }
+            }
+
+            // Initialize progress on page load
+            updateProgress();
+
+            // === SMART NOTIFICATIONS SYSTEM ===
+
+            let notificationId = 0;
+            let idleTimer = null;
+            let userActivity = {
+                lastAction: Date.now(),
+                sectionsVisited: new Set(),
+                totalActions: 0
+            };
+
+            // Notification System
+            function showNotification(options) {
+                const {
+                    type = 'info',
+                    title = 'إشعار',
+                    message = '',
+                    icon = 'ri-information-line',
+                    duration = 5000,
+                    actions = []
+                } = options;
+
+                const container = document.getElementById('notification-container');
+                const id = ++notificationId;
+
+                const notification = document.createElement('div');
+                notification.className = `smart-notification ${type}`;
+                notification.id = `notification-${id}`;
+
+                let actionsHTML = '';
+                if (actions.length > 0) {
+                    actionsHTML = '<div class="notification-actions">';
+                    actions.forEach(action => {
+                        actionsHTML += `
+                        <button class="notification-btn ${action.type || 'secondary'}" 
+                                onclick="${action.onClick}">
+                            ${action.icon ? `<i class="${action.icon}"></i>` : ''}
+                            ${action.label}
+                        </button>
+                    `;
+                    });
+                    actionsHTML += '</div>';
+                }
+
+                notification.innerHTML = `
+                <div class="notification-header">
+                    <div class="notification-title">
+                        <i class="${icon}"></i>
+                        <span>${title}</span>
+                    </div>
+                    <button class="notification-close" onclick="closeNotification(${id})">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+                <div class="notification-body">${message}</div>
+                ${actionsHTML}
+            `;
+
+                container.appendChild(notification);
+                playSound('open');
+
+                if (duration > 0) {
+                    setTimeout(() => closeNotification(id), duration);
+                }
+
+                return id;
+            }
+
+            function closeNotification(id) {
+                const notification = document.getElementById(`notification-${id}`);
+                if (notification) {
+                    notification.style.animation = 'slideOutRight 0.3s ease-out';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }
+
+            // Welcome Notification
+            window.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => {
+                    const isFirstVisit = !localStorage.getItem('cryptoPediaVisited');
+
+                    if (isFirstVisit) {
+                        showNotification({
+                            type: 'tip',
+                            title: 'مرحباً بك في موسوعة التشفير! 📚',
+                            icon: 'ri-book-open-line',
+                            message: 'استكشف خوارزميات التشفير من الكلاسيكية إلى الحديثة، وجرب التمارين التفاعلية!',
+                            duration: 8000,
+                            actions: [
+                                {
+                                    label: 'ابدأ التعلم',
+                                    type: 'primary',
+                                    icon: 'ri-play-line',
+                                    onClick: `document.querySelector('#classic').scrollIntoView({behavior: 'smooth'}); closeNotification(${notificationId})`
+                                },
+                                {
+                                    label: 'المختبر العملي',
+                                    type: 'secondary',
+                                    icon: 'ri-flask-line',
+                                    onClick: `window.location.href='/tool'`
+                                }
+                            ]
+                        });
+
+                        localStorage.setItem('cryptoPediaVisited', 'true');
+                    }
+                }, 1500);
+            });
+
+            // Track User Activity
+            function trackActivity(action) {
+                userActivity.lastAction = Date.now();
+                userActivity.totalActions++;
+
+                // Reset idle timer
+                clearTimeout(idleTimer);
+                idleTimer = setTimeout(showIdleSuggestion, 90000); // 1.5 minutes
+            }
+
+            // Show Idle Suggestion
+            function showIdleSuggestion() {
+                const suggestions = [
+                    {
+                        title: 'جرب المختبر العملي! 🧪',
+                        message: 'طبق ما تعلمته في المختبر التفاعلي',
+                        action: `window.location.href='/tool'`,
+                        actionLabel: 'افتح المختبر'
+                    },
+                    {
+                        title: 'جرب التمارين التفاعلية! 🎮',
+                        message: 'اختبر معرفتك بالتمارين والألعاب التعليمية',
+                        action: `document.querySelector('.exercise-btn')?.click(); dismissIdleSuggestion();`,
+                        actionLabel: 'ابدأ التمرين'
+                    },
+                    {
+                        title: 'استكشف الخوارزميات الحديثة! 🔐',
+                        message: 'تعلم عن AES وRSA والتشفير المتقدم',
+                        action: `document.querySelector('#modern').scrollIntoView({behavior: 'smooth'}); dismissIdleSuggestion();`,
+                        actionLabel: 'استكشف'
+                    },
+                    {
+                        title: 'غير الثيم! 🎨',
+                        message: 'اختر من بين 6 ثيمات مختلفة لتجربة بصرية أفضل',
+                        action: 'toggleThemeMenu(); dismissIdleSuggestion();',
+                        actionLabel: 'اختر ثيم'
+                    }
+                ];
+
+                const suggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
+
+                const popup = document.createElement('div');
+                popup.className = 'idle-suggestion';
+                popup.id = 'idle-suggestion';
+                popup.innerHTML = `
+                <div class="idle-suggestion-content">
+                    <div class="idle-icon">💡</div>
+                    <div class="idle-text">
+                        <h4>${suggestion.title}</h4>
+                        <p>${suggestion.message}</p>
+                    </div>
+                </div>
+                <div class="idle-actions">
+                    <button class="idle-btn primary" onclick="${suggestion.action}">
+                        ${suggestion.actionLabel}
+                    </button>
+                    <button class="idle-btn dismiss" onclick="dismissIdleSuggestion()">
+                        لاحقاً
+                    </button>
+                </div>
+            `;
+
+                document.body.appendChild(popup);
+                playSound('open');
+            }
+
+            function dismissIdleSuggestion() {
+                const popup = document.getElementById('idle-suggestion');
+                if (popup) {
+                    popup.style.animation = 'slideOutRight 0.3s ease-out';
+                    setTimeout(() => popup.remove(), 300);
+                }
+                trackActivity('dismiss_suggestion');
+            }
+
+            // Section Entry Notifications
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !userActivity.sectionsVisited.has(entry.target.id)) {
+                        userActivity.sectionsVisited.add(entry.target.id);
+
+                        const sectionTips = {
+                            'classic': {
+                                title: 'الخوارزميات الكلاسيكية 📜',
+                                message: 'هذه الخوارزميات استخدمت لقرون! جرب التطبيقات التفاعلية لفهم كيفية عملها.',
+                                icon: 'ri-ancient-gate-line'
+                            },
+                            'modern': {
+                                title: 'التشفير الحديث 🔐',
+                                message: 'هذه الخوارزميات تحمي بياناتك اليوم! تعلم كيف تعمل AES وRSA.',
+                                icon: 'ri-shield-keyhole-line'
+                            }
+                        };
+
+                        const tip = sectionTips[entry.target.id];
+                        if (tip) {
+                            setTimeout(() => {
+                                showNotification({
+                                    type: 'info',
+                                    ...tip,
+                                    duration: 5000
+                                });
+                            }, 500);
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // Observe sections
+            document.querySelectorAll('.lesson-module').forEach(section => {
+                if (section.id) observer.observe(section);
+            });
+
+            // Initialize idle tracking
+            document.addEventListener('keypress', () => trackActivity('keyboard'));
+            document.addEventListener('pointerdown', () => trackActivity('pointer'));
+            document.addEventListener('click', () => trackActivity('click'));
+            document.addEventListener('scroll', () => trackActivity('scroll'));
+
+            // Start idle timer
+            idleTimer = setTimeout(showIdleSuggestion, 90000);
+
+            // === Theme Management System ===
+            let currentTheme = 'dark';
+
+            // Load saved theme on page load
+            window.addEventListener('DOMContentLoaded', () => {
+                const savedTheme = localStorage.getItem('cryptoTheme') || 'dark';
+                applyTheme(savedTheme, false);
+            });
+
+            function toggleThemeMenu() {
+                const menu = document.getElementById('theme-menu');
+                if (menu.style.display === 'none' || !menu.style.display) {
+                    menu.style.display = 'block';
+                    menu.style.animation = 'slideDown 0.3s ease-out';
+                    playSound('open');
+                } else {
+                    menu.style.animation = 'slideUp 0.3s ease-out';
+                    setTimeout(() => menu.style.display = 'none', 300);
+                    playSound('close');
+                }
+            }
+
+            function applyTheme(themeName, animate = true) {
+                if (currentTheme === themeName && animate) return;
+
+                currentTheme = themeName;
+                localStorage.setItem('cryptoTheme', themeName);
+
+                // Remove all theme classes
+                document.body.classList.remove('theme-cyber', 'theme-dark', 'theme-matrix', 'theme-sunset', 'theme-ocean', 'theme-royal');
+
+                // Add new theme class
+                document.body.classList.add(`theme-${themeName}`);
+
+                // Update active state
+                document.querySelectorAll('.theme-card').forEach(card => {
+                    card.classList.remove('active');
+                    if (card.dataset.theme === themeName) {
+                        card.classList.add('active');
+                    }
+                });
+
+                // Play sound and show notification
+                if (animate) {
+                    playSound('theme');
+                    showThemeNotification(themeName);
+                    createThemeParticles();
+                }
+
+                // Close menu
+                if (animate) {
+                    setTimeout(() => toggleThemeMenu(), 500);
+                }
+            }
+
+            function showThemeNotification(themeName) {
+                const notification = document.createElement('div');
+                notification.className = 'theme-notification';
+                notification.innerHTML = `
+                <i class="ri-check-circle-line"></i>
+                <span>تم تطبيق ثيم ${getThemeNameArabic(themeName)}</span>
+            `;
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.animation = 'slideUp 0.3s ease-out';
+                    setTimeout(() => notification.remove(), 300);
+                }, 2000);
+            }
+
+            function getThemeNameArabic(theme) {
+                const names = {
+                    'cyber': 'سايبر',
+                    'dark': 'داكن',
+                    'matrix': 'ماتريكس',
+                    'sunset': 'غروب',
+                    'ocean': 'محيط',
+                    'royal': 'ملكي'
+                };
+                return names[theme] || theme;
+            }
+
+            function createThemeParticles() {
+                for (let i = 0; i < 20; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'theme-particle';
+                    particle.style.left = Math.random() * window.innerWidth + 'px';
+                    particle.style.top = Math.random() * window.innerHeight + 'px';
+                    document.body.appendChild(particle);
+
+                    setTimeout(() => particle.remove(), 1000);
+                }
+            }
+
+            // === Sound Effects System ===
+            const sounds = {
+                click: () => playTone(800, 0.1, 0.05),
+                success: () => playTone(1000, 0.15, 0.1),
+                error: () => playTone(400, 0.2, 0.1),
+                open: () => playTone(600, 0.1, 0.05),
+                close: () => playTone(500, 0.1, 0.05),
+                theme: () => {
+                    playTone(600, 0.05, 0.03);
+                    setTimeout(() => playTone(800, 0.05, 0.03), 50);
+                    setTimeout(() => playTone(1000, 0.1, 0.05), 100);
+                }
+            };
+
+            function playSound(type) {
+                if (sounds[type]) {
+                    sounds[type]();
+                }
+            }
+
+            function playTone(frequency, duration, volume = 0.1) {
+                try {
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    oscillator.frequency.value = frequency;
+                    oscillator.type = 'sine';
+
+                    gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + duration);
+                } catch (e) {
+                    // Silently fail if audio context is not supported
+                }
+            }
+
+            // ============================================
+            // DES & Block Cipher Modes Functions
+            // ============================================
+
+            // DES Demo Function
+            function updateDESDemo() {
+                const input = document.getElementById('desInput');
+                const key = document.getElementById('desKey');
+                const result = document.getElementById('desResult');
+
+                if (!input || !key || !result) return;
+
+                if (input.value.length !== 8 || key.value.length !== 8) {
+                    result.innerText = 'يجب أن يكون النص والمفتاح 8 أحرف بالضبط';
+                    result.style.color = '#ef4444';
+                    return;
+                }
+
+                // Simple XOR simulation (not real DES)
+                let encrypted = '';
+                for (let i = 0; i < input.value.length; i++) {
+                    const charCode = input.value.charCodeAt(i) ^ key.value.charCodeAt(i);
+                    encrypted += String.fromCharCode(charCode);
+                }
+
+                // Convert to hex for display
+                let hex = '';
+                for (let i = 0; i < encrypted.length; i++) {
+                    hex += encrypted.charCodeAt(i).toString(16).padStart(2, '0') + ' ';
+                }
+
+                result.innerText = hex.toUpperCase();
+                result.style.color = 'var(--neon-green)';
+            }
+
+            // CBC Animation Function
+            let cbcAnimationRunning = false;
+            function animateCBC(btn) {
+                const container = document.getElementById('cbcAnimation');
+
+                if (!container || !btn) return;
+
+                if (cbcAnimationRunning) {
+                    container.style.display = 'none';
+                    cbcAnimationRunning = false;
+                    btn.innerHTML = '<i class="ri-play-circle-line"></i> شاهد كيف يعمل CBC';
+                    return;
+                }
+
+                container.style.display = 'block';
+                cbcAnimationRunning = true;
+                btn.innerHTML = '<i class="ri-stop-circle-line"></i> إيقاف العرض';
+
+                // Animate the blocks
+                const blocks = container.querySelectorAll('.block-visual');
+                blocks.forEach((block, index) => {
+                    setTimeout(() => {
+                        block.style.animation = 'blockPulse 0.5s ease';
+                    }, index * 200);
+                });
+
+                // Show success notification
+                setTimeout(() => {
+                    showNotification({
+                        type: 'success',
+                        title: 'CBC Mode',
+                        icon: 'ri-check-circle-line',
+                        message: 'لاحظ كيف يتم XOR كل كتلة مع الكتلة المشفرة السابقة!',
+                        duration: 4000
+                    });
+                }, 1500);
+            }
+
+            // CTR Counter Increment Function
+            let ctrCounter = 0;
+            function incrementCTR() {
+                ctrCounter++;
+                const valueElement = document.getElementById('ctrValue');
+
+                if (!valueElement) return;
+
+                valueElement.innerText = ctrCounter;
+
+                // Animate the counter
+                valueElement.style.transform = 'scale(1.2)';
+                valueElement.style.color = 'var(--neon-yellow)';
+
+                setTimeout(() => {
+                    valueElement.style.transform = 'scale(1)';
+                    valueElement.style.color = 'white';
+                }, 300);
+
+                // Animate process steps
+                const steps = document.querySelectorAll('.process-step');
+                steps.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.style.animation = 'blockPulse 0.5s ease';
+                    }, index * 150);
+                });
+
+                // Play sound
+                playSound('click');
+            }
+
+            // Initialize hero stats with animation
+            function initHeroStats() {
+                const stats = [
+                    { number: '11', label: 'متاحة الآن' },
+                    { number: '2', label: 'تصنيفات' },
+                    { number: '100%', label: 'تفاعلي' },
+                    { number: '4', label: 'غير متاحة' }
+                ];
+
+                const statItems = document.querySelectorAll('.stat-item');
+                statItems.forEach((item, index) => {
+                    const numberEl = item.querySelector('.stat-number');
+                    const labelEl = item.querySelector('.stat-label');
+
+                    if (numberEl && labelEl) {
+                        setTimeout(() => {
+                            numberEl.innerText = stats[index].number;
+                            labelEl.innerText = stats[index].label;
+                            item.style.animation = 'slideUp 0.6s ease';
+                        }, index * 200);
+                    }
+                });
+            }
+
+            // Initialize on page load
+            window.addEventListener('DOMContentLoaded', () => {
+                initHeroStats();
+
+                // Add intersection observer for mode diagrams
+                const modeObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animation = 'slideUp 0.6s ease';
+
+                            // Animate child elements
+                            const blocks = entry.target.querySelectorAll('.mode-block, .feistel-half');
+                            blocks.forEach((block, index) => {
+                                setTimeout(() => {
+                                    block.style.animation = 'fadeIn 0.5s ease';
+                                }, index * 100);
+                            });
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                // Observe all mode diagrams
+                document.querySelectorAll('.mode-diagram, .feistel-diagram').forEach(diagram => {
+                    modeObserver.observe(diagram);
+                });
+
+                // Add hover effects to table rows
+                const tableRows = document.querySelectorAll('.modes-table tbody tr');
+                tableRows.forEach(row => {
+                    row.addEventListener('mouseenter', () => {
+                        playTone(600, 0.05, 0.03);
+                    });
+                });
+            });
+
+        </script>
+</body>
+
+</html>
